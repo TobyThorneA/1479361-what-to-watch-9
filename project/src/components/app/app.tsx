@@ -1,5 +1,14 @@
-function App(): JSX.Element {
-  return <p id="12" color="green">Hello, world!</p>;
+import HomePage from '../home-page/home-page';
+// type filmPromo ={
+//   nameFilm: string,
+//   genre: string,
+//   date:number,
+// }
+
+function App(props: object[]) {
+
+  return (<HomePage {...props}/>);
+
 }
 
 export default App;
