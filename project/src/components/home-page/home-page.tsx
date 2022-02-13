@@ -1,14 +1,16 @@
 import CardFilm from '../card-film/card-film';
 import PromoFilm from '../promo-film/promo-film';
+import {Movie, Promo} from '../../types';
 // import SignIn from '../sign-in/sign-in';
 // import MyList from '../my-list/my-list';
 // import AddReview from '../add-review/add-review';
 
-function HomePage(props: object) {
-  const dataMovies = props.obj.dataWithMovies;
-  const dataFilmPromo = props.dataFilmPromo;
-  let idNumber = 0;
+interface HomePageProps {
+  movies: Array<Movie>,
+  promo: Promo,
+}
 
+function HomePage({movies,promo}: HomePageProps) {
   return (
     <body>
       <div className="visually-hidden">
@@ -42,7 +44,7 @@ function HomePage(props: object) {
           </symbol>
         </svg>
       </div>
-      <PromoFilm {...dataFilmPromo}/>
+      <PromoFilm {...promo}/>
 
 
       <div className="page-content">
@@ -83,12 +85,7 @@ function HomePage(props: object) {
           </ul>
 
           <div className="catalog__films-list">
-
-            {dataMovies.map((it: object) => {
-              it.id = idNumber;
-              idNumber++;
-              return <CardFilm {...it}/>
-            })}
+            {movies.map((it) => <CardFilm key={it.id} {...it}/>)}
           </div>
 
           <div className="catalog__more">

@@ -1,11 +1,11 @@
 import HomePage from '../home-page/home-page';
-// type filmPromo ={
-//   nameFilm: string,
-//   genre: string,
-//   date:number,
-// }
+import {Movie, Promo} from '../../types';
+interface AppProps {
+  movies: Array<Movie>,
+  promo: Promo,
+}
 
-function App(props: object[]) {
+function App(props: AppProps) {
 
   return (<HomePage {...props}/>);
 

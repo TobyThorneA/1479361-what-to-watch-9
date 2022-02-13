@@ -1,6 +1,7 @@
 import React from 'react';
+import { Promo } from '../../types';
 
-function PromoFilm(dataFilmPromo: object) {
+function PromoFilm({name, genre, date}: Promo) {
   return (
     <section className="film-card">
       <div className="film-card__bg">
@@ -36,10 +37,10 @@ function PromoFilm(dataFilmPromo: object) {
           </div>
 
           <div className="film-card__desc">
-            <h2 className="film-card__title">{dataFilmPromo.nameFilm}</h2>
+            <h2 className="film-card__title">{name}</h2>
             <p className="film-card__meta">
-              <span className="film-card__genre">{dataFilmPromo.genre}</span>
-              <span className="film-card__year">{dataFilmPromo.date}</span>
+              <span className="film-card__genre">{genre}</span>
+              <span className="film-card__year">{date}</span>
             </p>
 
             <div className="film-card__buttons">

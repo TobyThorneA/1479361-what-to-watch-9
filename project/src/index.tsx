@@ -1,17 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-import obj from './mock/card-film-mock';
+import {movies, promo} from './mock/card-film-mock';
 
-const dataFilmPromo ={
-  nameFilm: 'Vasya',
-  genre: 'comedy',
-  date:2015,
-};
 
 ReactDOM.render(
-
   <React.StrictMode>
-    <App {...{obj}}{...{dataFilmPromo}}/>
+    <App movies={movies} promo={promo}/>
   </React.StrictMode>,
-  document.getElementById('root'));
+  document.getElementById('root'),
+);
