@@ -1,4 +1,4 @@
-function Film() {
+function FilmPage() {
   return (
     <div>
       <section className="film-card film-card--full">
@@ -148,4 +148,4 @@ function Film() {
   );
 }
 
-export default Film;
+export default FilmPage;

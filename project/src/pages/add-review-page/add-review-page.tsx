@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 const stars = [...Array(10).keys()];
 
-function AddReview() {
+function AddReviewPage() {
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
@@ -74,4 +74,4 @@ function AddReview() {
   );
 }
 
-export default AddReview;
+export default AddReviewPage;

@@ -1,4 +1,4 @@
-function SignIn() {
+function SignInPage() {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -34,4 +34,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignInPage;

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import { Promo } from '../../types';
 
 function PromoFilm({name, genre, date}: Promo) {
@@ -50,7 +51,7 @@ function PromoFilm({name, genre, date}: Promo) {
                 </svg>
                 <span>Play</span>
               </button>
-              <Link to='mylist'>
+              <Link to={AppRoute.MyList}>
                 <button className="btn btn--list film-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>

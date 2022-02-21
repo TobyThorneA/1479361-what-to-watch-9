@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-function MyList() {
+function MyListPage() {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -117,4 +117,4 @@ function MyList() {
   );
 }
 
-export default MyList;
+export default MyListPage;
