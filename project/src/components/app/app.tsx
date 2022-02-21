@@ -44,7 +44,7 @@ function App(props: AppProps) {
           element={<SignInPage/>}
         />
         <Route
-          path={AppRoute.AddReviewPage}
+          path={AppRoute.AddReview}
           element={<AddReviewPage/>}
         />
         <Route
