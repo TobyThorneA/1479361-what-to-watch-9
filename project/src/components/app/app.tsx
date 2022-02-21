@@ -2,11 +2,11 @@ import HomePage from '../../pages/home-page/home-page';
 import {Movie, Promo} from '../../types';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const';
-import AddReview from '../../pages/add-review/add-review';
-import Film from '../../pages/film/film';
-import Player from '../../pages/players/player';
-import SignIn from '../../pages/sign-in/sign-in';
-import MyList from '../../pages/my-list/my-list';
+import AddReview from '../../pages/add-review-page/add-review-page';
+import Film from '../../pages/film-page/film-page';
+import Player from '../../pages/player-page/player-page';
+import SignIn from '../../pages/sign-in-page/sign-in-page';
+import MyList from '../../pages/my-list-page/my-list-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../../components/private-route/private-route';
 interface AppProps {
@@ -26,7 +26,7 @@ function App(props: AppProps) {
         <Route
           path={AppRoute.MyList}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
               <MyList/>
             </PrivateRoute>
           }
