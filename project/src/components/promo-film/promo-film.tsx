@@ -1,4 +1,5 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import { Promo } from '../../types';
 
 function PromoFilm({name, genre, date}: Promo) {
@@ -25,7 +26,7 @@ function PromoFilm({name, genre, date}: Promo) {
             </div>
           </li>
           <li className="user-block__item">
-            <a href="/"className="user-block__link">Sign out</a>
+            <Link to="/login"className="user-block__link">Sign out</Link>
           </li>
         </ul>
       </header>
@@ -50,12 +51,14 @@ function PromoFilm({name, genre, date}: Promo) {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list film-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
+              <Link to={AppRoute.MyList}>
+                <button className="btn btn--list film-card__button" type="button">
+                  <svg viewBox="0 0 19 20" width="19" height="20">
+                    <use xlinkHref="#add"></use>
+                  </svg>
+                  <span>My list</span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
