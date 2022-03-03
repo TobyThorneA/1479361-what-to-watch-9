@@ -1,17 +1,17 @@
 import CardFilm from '../../components/card-film/card-film';
 import PromoFilm from '../../components/promo-film/promo-film';
-import {Movie, Promo} from '../../types';
+import { FilmCard, Promo} from '../../types';
 
 
 interface HomePageProps {
-  movies: Array<Movie>,
-  promo: Promo,
+  films: Array<FilmCard>,
+  promo: Promo;
 }
 
-function HomePage({movies,promo}: HomePageProps) {
+function HomePage(props: HomePageProps) {
   return (
     <div>
-      <PromoFilm {...promo}/>
+      <PromoFilm {...props.promo}/>
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -50,7 +50,7 @@ function HomePage({movies,promo}: HomePageProps) {
           </ul>
 
           <div className="catalog__films-list">
-            {movies.map((it) => <CardFilm key={it.id} {...it}/>)}
+            {props.films.map((it) => <CardFilm key={it.id} {...it}/>)}
           </div>
 
           <div className="catalog__more">
