@@ -1,12 +1,24 @@
-import {Link} from 'react-router-dom';
-const stars = [...Array(10).keys()];
+import {Link, useParams} from 'react-router-dom';
+import CommentSubmissionForm from '../../components/comment-submission-form/comment-submission-form';
+import { FilmCard } from '../../types';
+import NotFoundPage from '../not-found-page/not-found-page';
+interface AddReviewPageProps {
+  films: Array<FilmCard>,
+}
 
-function AddReviewPage() {
+function AddReviewPage({films}: AddReviewPageProps) {
+  const {id} = useParams();
+  const dataFilm = films.find((it) => it.id === Number(id));
+
+  if(!dataFilm){
+    return <NotFoundPage/>;
+  }
+
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={dataFilm.img} alt={dataFilm.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -20,10 +32,11 @@ function AddReviewPage() {
             </a>
           </div>
 
+          {/*Блок нав в хедере есть только у адд ривью. чтото придумать надо  */}
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <Link to={`/films/${dataFilm.id}`} className="breadcrumbs__link">{dataFilm.name}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <Link to={'/'} className="breadcrumbs__link">Add review</Link>
@@ -44,31 +57,11 @@ function AddReviewPage() {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={dataFilm.img} alt={dataFilm.name} width="218" height="327" />
         </div>
       </div>
 
-      <div className="add-review">
-        <form action="#" className="add-review__form">
-          <div className="rating">
-            <div className="rating__stars">
-              {stars.map((it)=> (
-                <div key={it}>
-                  <input className="rating__input" id={`star-${it}`} type="radio" name="rating" value={it} />
-                  <label className="rating__label" htmlFor={`star-${it}`}>Rating {it + 1}</label>
-                </div>))}
-            </div>
-          </div>
-
-          <div className="add-review__text">
-            <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
-            <div className="add-review__submit">
-              <button className="add-review__btn" type="submit">Post</button>
-            </div>
-
-          </div>
-        </form>
-      </div>
+      <CommentSubmissionForm/>
 
     </section>
   );

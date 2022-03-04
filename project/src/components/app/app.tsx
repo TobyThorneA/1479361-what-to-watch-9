@@ -1,5 +1,5 @@
 import HomePage from '../../pages/home-page/home-page';
-import {Movie, Promo} from '../../types';
+import {FilmCard, Promo} from '../../types';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import AddReviewPage from '../../pages/add-review-page/add-review-page';
@@ -10,8 +10,8 @@ import MyListPage from '../../pages/my-list-page/my-list-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../../components/private-route/private-route';
 interface AppProps {
-  movies: Array<Movie>,
-  promo: Promo,
+  films: Array<FilmCard>,
+  promo: Promo;
 }
 
 function App(props: AppProps) {
@@ -37,7 +37,7 @@ function App(props: AppProps) {
         />
         <Route
           path={AppRoute.Film}
-          element={<FilmPage/>}
+          element={<FilmPage {...props}/>}
         />
         <Route
           path={AppRoute.SignIn}
@@ -45,7 +45,7 @@ function App(props: AppProps) {
         />
         <Route
           path={AppRoute.AddReview}
-          element={<AddReviewPage/>}
+          element={<AddReviewPage {...props}/>}
         />
         <Route
           path='*'
