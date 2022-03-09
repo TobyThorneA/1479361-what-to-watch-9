@@ -1,7 +1,21 @@
-function PlayerPage() {
+import { useParams } from 'react-router-dom';
+import { FilmCard } from '../../types';
+import NotFoundPage from '../not-found-page/not-found-page';
+
+interface PlayerPageProps {
+  films: Array<FilmCard>,
+}
+
+function PlayerPage({films}: PlayerPageProps) {
+  const {id} = useParams();
+  const dataFilm = films.find((it) => it.id === Number(id));
+
+  if(!dataFilm){
+    return <NotFoundPage/>;
+  }
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video  autoPlay src={dataFilm.video} className="player__video" poster={dataFilm.img}></video>
 
       <button type="button" className="player__exit">Exit</button>
 
