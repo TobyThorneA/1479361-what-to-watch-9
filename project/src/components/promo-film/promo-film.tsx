@@ -7,7 +7,6 @@ function PromoFilm({name, date, genre, imgSrc, alt, backgroundImg}: Promo ) {
     <section className="film-card">
       <div className="film-card__bg">
         <img src={backgroundImg} alt="The Grand Budapest Hotel" />
-        {/* <video controls autoPlay src={backgroundImg}></video> */}
       </div>
       <h1 className="visually-hidden">WTW</h1>
 
