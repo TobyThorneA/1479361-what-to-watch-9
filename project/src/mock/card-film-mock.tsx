@@ -1,90 +1,6 @@
-// const movies =[
-//   {
-//     img: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
-//     title: 'Fantastic Beasts: The Crimes of Grindelwald',
-
-//   },
-//   {
-//     img: 'img/bohemian-rhapsody.jpg',
-//     title: 'Bohemian Rhapsody',
-//   },
-//   {
-//     img: 'img/macbeth.jpg',
-//     title: 'Macbeth',
-//   },
-//   {
-//     img: 'img/aviator.jpg',
-//     title: 'Aviator',
-//   },
-//   {
-//     img: 'img/we-need-to-talk-about-kevin.jpg',
-//     title: 'We need to talk about Kevin',
-//   },
-//   {
-//     img: 'img/what-we-do-in-the-shadows.jpg',
-//     title: 'What We Do in the Shadows',
-//   },
-//   {
-//     img: 'img/revenant.jpg',
-//     title: 'Revenant',
-//   },
-//   {
-//     img: 'img/johnny-english.jpg',
-//     title: 'Johnny english',
-//   },
-//   {
-//     img: 'img/shutter-island.jpg',
-//     title: 'Shuttter Island',
-//   },
-//   {
-//     img: 'img/pulp-fiction.jpg',
-//     title: 'Pulp Fiction',
-//   },
-//   {
-//     img: 'img/no-country-for-old-men.jpg',
-//     title: 'No Country for Old Men',
-//   },
-//   {
-//     img: 'img/snatch.jpg',
-//     title: 'Snatch',
-//   },
-//   {
-//     img: 'img/moonrise-kingdom.jpg',
-//     title: 'Moonrise Kingdoom',
-//   },
-//   {
-//     img: 'img/seven-years-in-tibet.jpg',
-//     title: 'Seven Years in Tibet',
-//   },
-//   {
-//     img: 'img/midnight-special.jpg',
-//     title: 'Midnight Special',
-//   },
-//   {
-//     img: 'img/war-of-the-worlds.jpg',
-//     title: 'War of the Worlds',
-//   },
-//   {
-//     img: 'img/dardjeeling-limited.jpg',
-//     title: 'Dardjeeling Limited',
-//   },
-//   {
-//     img: 'img/orlando.jpg',
-//     title: 'Orlando',
-//   },
-//   {
-//     img: 'img/mindhunter.jpg',
-//     title: 'Midhunter',
-//   },
-//   {
-//     img: 'img/midnight-special.jpg',
-//     title: 'Midnight Special',
-//   },
-// ].map((it, i) => ({id: i, ...it}));
-
 const promo = {
   name: 'Bohemain',
-  genre: 'xz',
+  genre: 'zx',
   date:20150,
   imgSrc: 'img/the-grand-budapest-hotel-poster.jpg',
   alt: 'The Grand Budapest Hotel poster',
@@ -94,7 +10,7 @@ const promo = {
 const films = [
   {
     name: 'Bohemain rhapsody',
-    genre: 'xz',
+    genre: 'comedy',
     date:2015,
     img: 'img/bohemian-rhapsody.jpg',
     video: 'img/video.mp4',
@@ -104,6 +20,66 @@ const films = [
     description: 'lalaasffsd',
     director: 'valabala',
     starring: 'Тётя Мотя, Дядя Лятя',
+    runTime: '1h 243m',
+    starringDetails: [
+      'a','b','ccccc','d',
+    ],
+    reviews: [
+      {
+        reviewText: 'lhfghfghalalala',
+        reviewAuthor: 'bghj344',
+        reviewDate: 'data1',
+        reviewRating: '1hjkjh0',
+      },
+      {
+        reviewText: 'lalafbcjhkkjhkvbcvbvblala',
+        reviewAuthor: 'bdfsdfkd',
+        reviewDate: 'data2',
+        reviewRating: '105fghfg432',
+      },
+      {
+        reviewText: 'lalaffdghhhgbcvbcvbvblala',
+        reviewAuthor: 'bdfghfghfd',
+        reviewDate: '11111111111111111111111111',
+        reviewRating: '105fgh432',
+      },
+      {
+        reviewText: 'lalalartyt,lluiltkqwefadasdasdasfdssfgdfgd',
+        reviewAuthor: 'bdfgrtyrtdf',
+        reviewDate: '111111111111111111111111',
+        reviewRating: '10rtyrty00',
+      },
+      {
+        reviewText: 'lalartrykkkerfbcvbcvbvblala',
+        reviewAuthor: 'brtdfd111',
+        reviewDate: '1111',
+        reviewRating: '1054hrt32',
+      },
+      {
+        reviewText: 'lalafbcerthvbcvbvblala',
+        reviewAuthor: 'bdetfd',
+        reviewDate: '11111',
+        reviewRating: '105ret432',
+      },
+      {
+        reviewText: 'lalalaadatyulfesdasdasfdssfgdfgd',
+        reviewAuthor: 'bdfgdyutyf',
+        reviewDate: '111111',
+        reviewRating: '1 yujt000',
+      },
+      {
+        reviewText: 'lalafbcdasdaskljkvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalaasdasfbcvbcvbvblala',
+        reviewAuthor: 'basdasdfd',
+        reviewDate: '125',
+        reviewRating: '10xc5432',
+      },
+    ].map((it,i) => ({id: i, ...it})),
   },
   {
     name: 'Macbeth',
@@ -117,10 +93,70 @@ const films = [
     description: 'lalalalala',
     director: 'val',
     starring: 'Тётя Мотя, Дядя Лятя и др.',
+    runTime: '1h 244m',
+    starringDetails: [
+      'aaaaa','b','c','d',
+    ],
+    reviews: [
+      {
+        reviewText: 'lalaldfkuikluyaadasdasdasfdssfgdfgd',
+        reviewAuthor: 'bdfdgdfggdf',
+        reviewDate: '121dfgdf312',
+        reviewRating: '1000',
+      },
+      {
+        reviewText: 'lalsdfsdf    nafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: 's125',
+        reviewRating: '105dfgdfg432',
+      },
+      {
+        reviewText: 'lalafdgdfgfdbcvbcvbvblala',
+        reviewAuthor: 'bddfgdffd',
+        reviewDate: '125ddfhdf',
+        reviewRating: '105ghdghdh432',
+      },
+      {
+        reviewText: 'lalalaawerwerwennghdasdasdasfdssfgdfgd',
+        reviewAuthor: 'bderwfgdf',
+        reviewDate: '12wer1312',
+        reviewRating: '10dfgd00',
+      },
+      {
+        reviewText: 'lalavbnvbfbcvbcvbvblala',
+        reviewAuthor: 'bdvbnbvfd',
+        reviewDate: '12bvnv5',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdvbnvbnfd',
+        reviewDate: '12nbv5',
+        reviewRating: '10vnvbn432',
+      },
+      {
+        reviewText: 'lalaldfgdfgfdaadasdasdasfdssfgdfgd',
+        reviewAuthor: 'bddfgdfgdf',
+        reviewDate: '1213dfgdf12',
+        reviewRating: '1000',
+      },
+      {
+        reviewText: 'laladfgdfgfbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalfdgdfgafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125dgd',
+        reviewRating: '105dfgdfg32',
+      },
+    ].map((it,i) => ({id: i, ...it})),
   },
   {
     name: 'Seven years in Tibet',
-    genre: 'history',
+    genre: 'comedy',
     date:2013,
     img: 'img/seven-years-in-tibet.jpg',
     video: 'img/video2.mp4',
@@ -130,10 +166,69 @@ const films = [
     description: 'Ololo',
     director: 'valabala',
     starring: 'Тётя Мотя, Дядя',
+    runTime: '1h 245m',
+    starringDetails: [
+      'a','b','c','ddddd',
+    ],
+    reviews: [
+      {
+        reviewText: 'lalaafdfslala',
+        reviewAuthor: 'bsdfdgfddndsfs',
+        reviewDate: '1221',
+        reviewRating: '10fd',
+      },
+      {
+        reviewText: 'lalavxcvxsdffbcvbcvbvblala',
+        reviewAuthor: 'bxcvxcvdfd',
+        reviewDate: '125',
+        reviewRating: '1vxcv5432',
+      },{
+        reviewText: 'lalafxxxbcvbcvbvblala',
+        reviewAuthor: 'bdxxxfd',
+        reviewDate: '1cvb25',
+        reviewRating: '1vb05432',
+      },
+      {
+        reviewText: 'lalbvcbalaadasdasdasfdssfgdfgd',
+        reviewAuthor: 'bdvbvcbfgdf',
+        reviewDate: '121312',
+        reviewRating: 'vbcvb000',
+      },
+      {
+        reviewText: 'laladsssdfbcvbcvbvblala',
+        reviewAuthor: 'bdfcvbvcd',
+        reviewDate: '1d25',
+        reviewRating: '1dd05432',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalalxvcxcaadasdasdasfdssfgdfgd',
+        reviewAuthor: 'bdvxcfgdf',
+        reviewDate: '1213xv 12',
+        reviewRating: '100dsd0',
+      },
+      {
+        reviewText: 'lalafxcvxcbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdxcvxcvfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+    ].map((it,i) => ({id: i, ...it})),
   },
   {
     name: 'dardjeeling limited',
-    genre: 'drama',
+    genre: 'comedy',
     date:2012,
     img: 'img/dardjeeling-limited.jpg',
     video: 'img/video3.mp4',
@@ -143,10 +238,70 @@ const films = [
     description: 'hatahasdfsdfdsfdsfsdfsdfsdfsdfsdf',
     director: 'lol',
     starring: 'Тётя , Дядя Лятя',
+    runTime: '1h 246m',
+    starringDetails: [
+      'a','b','casdasdasdas','d',
+    ],
+    reviews: [
+      {
+        reviewText: 'lalaldfsfdsfdsala',
+        reviewAuthor: 'cxvbb',
+        reviewDate: '12121',
+        reviewRating: '10444',
+      },
+      {
+        reviewText: 'lalafbcv,,bcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '12fdgd5',
+        reviewRating: '10543dg2',
+      },
+      {
+        reviewText: 'lalalaadasdasdasfdssfgdfgd',
+        reviewAuthor: 'bddgdf12',
+        reviewDate: '12fdgd5',
+        reviewRating: '100dgdf0',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105dfgdg432',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalalaadasdasdasfdssfgdfgd',
+        reviewAuthor: 'gdfgfdgbdfgdf',
+        reviewDate: '121312',
+        reviewRating: '10dgd00',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+    ].map((it,i) => ({id: i, ...it})),
   },
   {
     name: 'War of the worlds',
-    genre: 'disaster',
+    genre: 'comedy',
     date:2011,
     img: 'img/war-of-the-worlds.jpg',
     video: 'img/video4.mp4',
@@ -156,10 +311,70 @@ const films = [
     description: 'lalafdsfdsf123123123121234',
     director: 'valaa dva naxala',
     starring: 'Тётя Мотя, Лятя',
+    runTime: '1h 247m',
+    starringDetails: [
+      'a','b','c','asdadadasd',
+    ],
+    reviews: [
+      {
+        reviewText: 'lalalamjk,i;yerrertbla',
+        reviewAuthor: 'bhfgh',
+        reviewDate: '1290878',
+        reviewRating: '1078',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalalaadasdasdasfdssfgdfgd',
+        reviewAuthor: 'bdfgdf',
+        reviewDate: '121312',
+        reviewRating: '1000',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalalaadasdasdasfdssfgdfgd',
+        reviewAuthor: 'bdfgdf',
+        reviewDate: '121312',
+        reviewRating: '1000',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+    ].map((it,i) => ({id: i, ...it})),
   },
   {
     name: 'Orlando',
-    genre: 'com',
+    genre: 'comedy',
     date:2010,
     img: 'img/orlando.jpg',
     video: 'img/video5.mp4',
@@ -169,10 +384,51 @@ const films = [
     description: 'lalaasdsdsadasdasdasdas90090909090909090',
     director: 'valabala',
     starring: 'Тётя Мотя, Дядя Лятя',
+    runTime: '1h 248m',
+    starringDetails: [
+      'a','badadasdasda','c','d',
+    ],
+    reviews: [
+      {
+        reviewText: 'lalafbcvjkjkhjkjhkbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalaasdasdasdasdfbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },{
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalalaadasdjkhjkjhkjhkvbnvbn    asdasfdssfgdfgd',
+        reviewAuthor: 'bdfgdf',
+        reviewDate: '121312',
+        reviewRating: '1000',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvhjhjwwrrwerrlala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalafbcvbghdfhhcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+    ].map((it,i) => ({id: i, ...it})),
   },
   {
     name: 'Mindhunter',
-    genre: 'comed',
+    genre: 'comedy',
     date:2009,
     img: 'img/mindhunter.jpg',
     video: 'img/video6.mp4',
@@ -182,6 +438,48 @@ const films = [
     description: 'lalajhclsdfilsdgfiagf;foho;l;sfkbkdf888888888888888',
     director: 'valabala',
     starring: 'Тётя Мотя, Дядя Лятя',
+    runTime: '1h 249m',
+    starringDetails: [
+      'a','b','caaaaaa','d',
+    ],
+    reviews: [
+      {
+        reviewText: 'laladfgdgdhghherewrewsdflala',
+        reviewAuthor: 'bbddd',
+        reviewDate: '121',
+        reviewRating: '56',
+      },
+      {
+        reviewText: 'laladfgdgdhghherewrewsdflala',
+        reviewAuthor: 'bbddd',
+        reviewDate: '121',
+        reviewRating: '56',
+      },
+      {
+        reviewText: 'laladfgdgdhghherewrewsdflala',
+        reviewAuthor: 'bbddd',
+        reviewDate: '121',
+        reviewRating: '56',
+      },
+      {
+        reviewText: 'lalalaadasdasdasfdssfgdfgd',
+        reviewAuthor: 'bdfgdf',
+        reviewDate: '121312',
+        reviewRating: '1000',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+    ].map((it,i) => ({id: i, ...it})),
   },
   {
     name: 'Midnight special',
@@ -195,6 +493,48 @@ const films = [
     description: 'lalaasdasdijbfgipuerioweiojerongdflgndflvnklsnvkfbv.kxbvdfkgbdf7777777777',
     director: 'valabala',
     starring: 'Тётя Мотя, Дядя Лятя',
+    runTime: '1h 240m',
+    starringDetails: [
+      'aaaaaaaaaaaaa','b','c','d',
+    ],
+    reviews: [
+      {
+        reviewText: 'lalfghfhfghgfhfghgfhhgjk6i6etwr3rwfwerwalala',
+        reviewAuthor: 'bwerwerwertwes',
+        reviewDate: '12432423',
+        reviewRating: '10234234',
+      },
+      {
+        reviewText: 'lalfghfghgfhfghgfhhgjk6i6etwr3rwfwerwalala',
+        reviewAuthor: 'bwefgh423',
+        reviewDate: '12fdgd5',
+        reviewRating: '10234234',
+      },
+      {
+        reviewText: 'lalfghfghgfhfghgfhhgjk6i6etwr3rwfwerwalala',
+        reviewAuthor: 'bwefghrwerwertwes',
+        reviewDate: '12432423',
+        reviewRating: '10234234',
+      },
+      {
+        reviewText: 'lalalaadasdasdasfdssfgdfgd',
+        reviewAuthor: 'bhfg312',
+        reviewDate: '12fdgd5',
+        reviewRating: '1000',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: 'fghfghf105432',
+      },
+      {
+        reviewText: 'lalafbcvbcvbvblala',
+        reviewAuthor: 'bdfd',
+        reviewDate: '125',
+        reviewRating: '105432',
+      },
+    ].map((it,i) => ({id: i, ...it})),
   },
 ].map((it,i) => ({id: i, ...it}));
 
