@@ -1,5 +1,9 @@
+// import { useDispatch } from 'react-redux';
 import CardFilm from '../../components/card-film/card-film';
+import Catalog from '../../components/catalog/catalog';
 import PromoFilm from '../../components/promo-film/promo-film';
+import { useAppSelector } from '../../hooks';
+// import { chanchingTheGenreComedies } from '../../store/action';
 import { FilmCard, Promo} from '../../types';
 
 
@@ -8,7 +12,24 @@ interface HomePageProps {
   promo: Promo;
 }
 
+const arr = [
+  'All Genres', 'Comedies', 'Crime',
+  'Documentary','Dramas', 'Horror', 'Kids & Family',
+  'Romance', 'Sci-Fi', 'Thrillers',
+];
+
 function HomePage(props: HomePageProps) {
+  const selector = useAppSelector((state) => state);
+
+  const filterFilms = props.films.filter((it) => {
+    if('All Genres' === selector.genre){
+      return it;
+    }else if(it.genre === selector.genre){
+      return it;
+    }
+    return null;
+  });
+
   return (
     <div>
       <PromoFilm {...props.promo}/>
@@ -17,40 +38,17 @@ function HomePage(props: HomePageProps) {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="/" className="catalog__genres-link">All genres</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Comedies</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Crime</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Documentary</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Dramas</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Horror</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Kids & Family</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Romance</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Sci-Fi</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Thrillers</a>
-            </li>
+            {arr.map((it,i) => <Catalog key={it} it={it} />)}
           </ul>
 
           <div className="catalog__films-list">
-            {props.films.map((it) => <CardFilm key={it.id} {...it}/>)}
+            {filterFilms.map((it) => <CardFilm key={it.id} {...it}/>)}
+            {/* {props.films.filter((film) => {
+              if(selector.genre === film.genre){
+                return <CardFilm key={film.id} {...film}/>;
+              }
+              return null;
+            } )} */}
           </div>
 
           <div className="catalog__more">
