@@ -5,7 +5,6 @@ import App from './components/app/app';
 import { films, promo} from './mock/card-film-mock';
 import {store} from './store/index';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

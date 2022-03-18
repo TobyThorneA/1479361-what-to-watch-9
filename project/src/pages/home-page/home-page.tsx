@@ -43,12 +43,6 @@ function HomePage(props: HomePageProps) {
 
           <div className="catalog__films-list">
             {filterFilms.map((it) => <CardFilm key={it.id} {...it}/>)}
-            {/* {props.films.filter((film) => {
-              if(selector.genre === film.genre){
-                return <CardFilm key={film.id} {...film}/>;
-              }
-              return null;
-            } )} */}
           </div>
 
           <div className="catalog__more">

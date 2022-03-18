@@ -7,6 +7,8 @@ interface MoreLikeFilmsProps {
 }
 
 function MoreLikeFilms({films, dataFilm}: MoreLikeFilmsProps) {
+  // eslint-disable-next-line no-console
+  // console.log('films', films, 'datafilm',dataFilm);
 
   return (
     <div className="page-content">
