@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import Header from '../../components/header/header';
 import NotFoundPage from '../not-found-page/not-found-page';
+import Index from '../../components/tabs';
+import MoreLikeFilms from '../../components/more-like/more-like-films';
 
 interface FilmPageProps {
   films: Array<FilmCard>,
@@ -61,88 +63,14 @@ function FilmPage({films}: FilmPageProps) {
               <img src={dataFilm.img} alt={dataFilm.name} width="218" height="327" />
             </div>
 
-            <div className="film-card__desc">
-              <nav className="film-nav film-card__nav">
-                <ul className="film-nav__list">
-                  <li className="film-nav__item film-nav__item--active">
-                    <Link to='/' className="film-nav__link">Overview</Link>
-                  </li>
-                  <li className="film-nav__item">
-                    <Link to='/' className="film-nav__link">Details</Link>
-                  </li>
-                  <li className="film-nav__item">
-                    <Link to='/'  className="film-nav__link">Reviews</Link>
-                  </li>
-                </ul>
-              </nav>
-              {/* Компонент Overview */}
-              <div className="film-rating">
-                <div className="film-rating__score">{dataFilm.rating}</div>
-                <p className="film-rating__meta">
-                  <span className="film-rating__level">{dataFilm.assessmentRating}</span>
-                  <span className="film-rating__count">{dataFilm.numberOfRatings} ratings</span>
-                </p>
-              </div>
+            <Index {...dataFilm}/>
 
-              <div className="film-card__text">
-                <p>{dataFilm.description}</p>
-
-                <p>{dataFilm.description}</p>
-
-                <p className="film-card__director"><strong>Director: {dataFilm.director}</strong></p>
-
-                <p className="film-card__starring"><strong>Starring: {dataFilm.starring}</strong></p>
-              </div>
-              {/* Конец компонента Overview */}
-            </div>
           </div>
         </div>
       </section>
-      {/* Отдельный компонент "могут понравится" */}
-      <div className="page-content">
-        <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
-          {/* Отдельный компонент фильм в компоненте: могут понравится */}
-          <div className="catalog__films-list">
-            <article className="small-film-card catalog__films-card">
-              <div className="small-film-card__image">
-                <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-              </div>
-              <h3 className="small-film-card__title">
-                <a className="small-film-card__link" href="film-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-              </h3>
-            </article>
 
-            <article className="small-film-card catalog__films-card">
-              <div className="small-film-card__image">
-                <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-              </div>
-              <h3 className="small-film-card__title">
-                <a className="small-film-card__link" href="film-page.html">Bohemian Rhapsody</a>
-              </h3>
-            </article>
+      <MoreLikeFilms films={films} dataFilm={dataFilm}/>
 
-            <article className="small-film-card catalog__films-card">
-              <div className="small-film-card__image">
-                <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-              </div>
-              <h3 className="small-film-card__title">
-                <a className="small-film-card__link" href="film-page.html">Macbeth</a>
-              </h3>
-            </article>
-
-            <article className="small-film-card catalog__films-card">
-              <div className="small-film-card__image">
-                <img src="img/aviator.jpg" alt="Aviator" width="280" height="175" />
-              </div>
-              <h3 className="small-film-card__title">
-                <a className="small-film-card__link" href="film-page.html">Aviator</a>
-              </h3>
-            </article>
-
-          </div>
-        </section>
-      </div>
     </div>
   );
 }

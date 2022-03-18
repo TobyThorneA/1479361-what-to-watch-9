@@ -31,7 +31,13 @@ function VideoPlayer(props: FilmCard) {
       onMouseLeave={() => setStateId(-1)}
     >
 
-      <video muted  src={props.video} ref={videoRef} poster={props.img} width='280' height='175'/>
+      <video
+        muted
+        ref={videoRef}
+        poster={props.img}
+        width='280'
+        height='175'
+      />
 
     </div>
   );
