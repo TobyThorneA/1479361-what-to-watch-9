@@ -1,11 +1,9 @@
-// import { useDispatch } from 'react-redux';
 import CardFilm from '../../components/card-film/card-film';
 import Catalog from '../../components/catalog/catalog';
 import PromoFilm from '../../components/promo-film/promo-film';
 import ShowMoreButton from '../../components/show-more-button/show-more-button';
 import { NUMBER_OF_MOVIES_DISPLAYED } from '../../const';
 import { useAppSelector } from '../../hooks';
-// import { chanchingTheGenreComedies } from '../../store/action';
 import { FilmCard, Promo} from '../../types';
 
 
@@ -14,7 +12,7 @@ interface HomePageProps {
   promo: Promo;
 }
 
-const catalogGenres = [
+const genres = [
   'All Genres', 'Comedies', 'Crime',
   'Documentary','Dramas', 'Horror', 'Kids & Family',
   'Romance', 'Sci-Fi', 'Thrillers',
@@ -26,36 +24,35 @@ const showMoreViewButton = (films: Array<FilmCard>, numberFilms: number) => {
   }
 };
 
-function HomePage(props: HomePageProps) {
-  const selector = useAppSelector((state) => state);
+function HomePage({films, promo}: HomePageProps) {
 
-  const filterFilms = props.films.filter((it) => {
-    if('All Genres' === selector.genre){
-      return it;
-    }else if(it.genre === selector.genre){
+  const currentGenre = useAppSelector((state) => state);
+
+  const filterFilms = films.filter((it) => {
+    if('All Genres' === currentGenre.genre){
       return it;
     }
-    return null;
+    return it.genre === currentGenre.genre;
   });
 
   return (
     <div>
-      <PromoFilm {...props.promo}/>
+      <PromoFilm {...promo}/>
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <ul className="catalog__genres-list">
-            {catalogGenres.map((it,i) => <Catalog key={it} it={it} />)}
+            {genres.map((it,i) => <Catalog key={it} it={it} />)}
           </ul>
 
           <div className="catalog__films-list">
             {filterFilms
               .map((it) => <CardFilm key={it.id} {...it}/>)
-              .slice(0, selector.numberFilms)}
+              .slice(0, currentGenre.numberFilms)}
           </div>
 
-          {showMoreViewButton(filterFilms, selector.numberFilms)}
+          {showMoreViewButton(filterFilms, currentGenre.numberFilms)}
 
         </section>
 
