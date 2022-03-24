@@ -1,9 +1,10 @@
-// import { useDispatch } from 'react-redux';
+import React from 'react';
 import CardFilm from '../../components/card-film/card-film';
-import Catalog from '../../components/catalog/catalog';
+import CatalogItem from '../../components/catalog/catalog-item';
 import PromoFilm from '../../components/promo-film/promo-film';
-import { useAppSelector } from '../../hooks';
-// import { chanchingTheGenreComedies } from '../../store/action';
+import ShowMoreButton from '../../components/show-more-button/show-more-button';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { changeGenre } from '../../store/action';
 import { FilmCard, Promo} from '../../types';
 
 
@@ -12,42 +13,58 @@ interface HomePageProps {
   promo: Promo;
 }
 
-const arr = [
+const genres = [
   'All Genres', 'Comedies', 'Crime',
   'Documentary','Dramas', 'Horror', 'Kids & Family',
   'Romance', 'Sci-Fi', 'Thrillers',
 ];
 
-function HomePage(props: HomePageProps) {
-  const selector = useAppSelector((state) => state);
+function HomePage({films, promo}: HomePageProps) {
 
-  const filterFilms = props.films.filter((it) => {
-    if('All Genres' === selector.genre){
-      return it;
-    }else if(it.genre === selector.genre){
+
+  const currentGenre = useAppSelector((state) => state.genre);
+  const currentFilm = useAppSelector((state) => state.filmsCount);
+  const dispatch = useAppDispatch();
+
+  const filterFilms = films.filter((it) => {
+    if('All Genres' === currentGenre){
       return it;
     }
-    return null;
+    return it.genre === currentGenre;
   });
+
+  const onCatalogItemClick = (evt: React.MouseEvent<HTMLLIElement>) => {
+    if(evt.currentTarget && evt.currentTarget.dataset.value){
+      dispatch(changeGenre(evt.currentTarget.dataset.value));
+    }
+  };
 
   return (
     <div>
-      <PromoFilm {...props.promo}/>
+      <PromoFilm {...promo}/>
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <ul className="catalog__genres-list">
-            {arr.map((it,i) => <Catalog key={it} it={it} />)}
+            {genres.map((title) => (
+              <CatalogItem
+                isActive={title === currentGenre}
+                key={title} title={title}
+                onClick={onCatalogItemClick}
+              />
+            ),
+            )}
           </ul>
 
           <div className="catalog__films-list">
-            {filterFilms.map((it) => <CardFilm key={it.id} {...it}/>)}
+            {filterFilms
+              .slice(0, currentFilm)
+              .map((it) => <CardFilm key={it.id} {...it}/>)}
           </div>
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          {filterFilms.length > currentFilm && <ShowMoreButton/>}
+
         </section>
 
         <footer className="page-footer">
