@@ -1,25 +1,21 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { changeGenre, clickShowMoreButton } from '../../store/action';
+import { changeGenre, showMore } from '../../store/action';
+import { GenreFilterReducerProps } from '../../types';
 
-
-interface GenreFilterReducerProps {
-  genre: string;
-  numberFilms: number;
-}
 
 const defaultGenre: GenreFilterReducerProps = {
   genre: 'All Genres',
-  numberFilms: 8,
+  filmsCount: 8,
 };
 
 const reducer = createReducer(defaultGenre, (builder) => {
   builder
     .addCase(changeGenre, (state, action) => {
       state.genre = action.payload;
-      state.numberFilms = defaultGenre.numberFilms;
+      state.filmsCount = defaultGenre.filmsCount;
     })
-    .addCase(clickShowMoreButton, (state) => {
-      state.numberFilms = state.numberFilms + 8;
+    .addCase(showMore, (state) => {
+      state.filmsCount += 8;
     });
 });
 

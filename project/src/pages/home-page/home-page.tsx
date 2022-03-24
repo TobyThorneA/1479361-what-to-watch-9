@@ -1,9 +1,10 @@
+import React from 'react';
 import CardFilm from '../../components/card-film/card-film';
-import Catalog from '../../components/catalog/catalog';
+import CatalogItem from '../../components/catalog/catalog-item';
 import PromoFilm from '../../components/promo-film/promo-film';
 import ShowMoreButton from '../../components/show-more-button/show-more-button';
-import { NUMBER_OF_MOVIES_DISPLAYED } from '../../const';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { changeGenre } from '../../store/action';
 import { FilmCard, Promo} from '../../types';
 
 
@@ -18,22 +19,25 @@ const genres = [
   'Romance', 'Sci-Fi', 'Thrillers',
 ];
 
-const showMoreViewButton = (films: Array<FilmCard>, numberFilms: number) => {
-  if( films.length > NUMBER_OF_MOVIES_DISPLAYED && films.length > numberFilms) {
-    return < ShowMoreButton />;
-  }
-};
-
 function HomePage({films, promo}: HomePageProps) {
 
-  const currentGenre = useAppSelector((state) => state);
+
+  const currentGenre = useAppSelector((state) => state.genre);
+  const currentFilm = useAppSelector((state) => state.filmsCount);
+  const dispatch = useAppDispatch();
 
   const filterFilms = films.filter((it) => {
-    if('All Genres' === currentGenre.genre){
+    if('All Genres' === currentGenre){
       return it;
     }
-    return it.genre === currentGenre.genre;
+    return it.genre === currentGenre;
   });
+
+  const onCatalogItemClick = (evt: React.MouseEvent<HTMLLIElement>) => {
+    if(evt.currentTarget && evt.currentTarget.dataset.value){
+      dispatch(changeGenre(evt.currentTarget.dataset.value));
+    }
+  };
 
   return (
     <div>
@@ -43,16 +47,23 @@ function HomePage({films, promo}: HomePageProps) {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <ul className="catalog__genres-list">
-            {genres.map((it,i) => <Catalog key={it} it={it} />)}
+            {genres.map((title) => (
+              <CatalogItem
+                isActive={title === currentGenre}
+                key={title} title={title}
+                onClick={onCatalogItemClick}
+              />
+            ),
+            )}
           </ul>
 
           <div className="catalog__films-list">
             {filterFilms
-              .map((it) => <CardFilm key={it.id} {...it}/>)
-              .slice(0, currentGenre.numberFilms)}
+              .slice(0, currentFilm)
+              .map((it) => <CardFilm key={it.id} {...it}/>)}
           </div>
 
-          {showMoreViewButton(filterFilms, currentGenre.numberFilms)}
+          {filterFilms.length > currentFilm && <ShowMoreButton/>}
 
         </section>
 

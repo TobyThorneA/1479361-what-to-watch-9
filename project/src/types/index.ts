@@ -32,3 +32,8 @@ export interface Promo {
   alt: string;
   backgroundImg: string;
 }
+
+export interface GenreFilterReducerProps {
+  genre: string;
+  filmsCount: number;
+}

@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './components/app/app';
 import { films, promo} from './mock/card-film-mock';
-import {store} from './store/index';
+import {fetchQuestionAction, store} from './store/index';
+
+store.dispatch(fetchQuestionAction());
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,3 +17,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+
+
