@@ -1,21 +1,19 @@
 import { useParams } from 'react-router-dom';
-import { FilmCard } from '../../types';
+import { useAppSelector } from '../../hooks';
 import NotFoundPage from '../not-found-page/not-found-page';
 
-interface PlayerPageProps {
-  films: Array<FilmCard>,
-}
 
-function PlayerPage({films}: PlayerPageProps) {
+function PlayerPage() {
+  const {filmsServer} = useAppSelector((state) => state);
   const {id} = useParams();
-  const dataFilm = films.find((it) => it.id === Number(id));
+  const dataFilm = filmsServer.find((it) => it.id === Number(id));
 
   if(!dataFilm){
     return <NotFoundPage/>;
   }
   return (
     <div className="player">
-      <video  autoPlay src={dataFilm.video} className="player__video" poster={dataFilm.img}></video>
+      <video  autoPlay src={dataFilm.videoLink} className="player__video" poster={dataFilm.posterImage}></video>
 
       <button type="button" className="player__exit">Exit</button>
 

@@ -1,17 +1,17 @@
-import { ReviewProps } from '../../types';
+import { CommentsServer } from '../../types';
 
-function Review(props: ReviewProps) {
+function Review(props: CommentsServer) {
   return (
     <div className="review">
       <blockquote className="review__quote">
-        <p className="review__text">{props.reviewText}</p>
+        <p key={props.user.id} className="review__text">{props.comment}</p>
 
         <footer className="review__details">
-          <cite className="review__author">{props.reviewAuthor}</cite>
-          <time className="review__date" dateTime="2016-12-24">{props.reviewDate}</time>
+          <cite className="review__author">{props.user.name}</cite>
+          <time className="review__date" dateTime="2016-12-24">{props.date}</time>
         </footer>
       </blockquote>
-      <div className="review__rating">{props.reviewRating}</div>
+      <div className="review__rating">{props.rating}</div>
     </div>
   );
 }

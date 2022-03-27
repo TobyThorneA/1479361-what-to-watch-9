@@ -1,4 +1,3 @@
-import { FilmCard } from '../../types';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
@@ -6,14 +5,13 @@ import Header from '../../components/header/header';
 import NotFoundPage from '../not-found-page/not-found-page';
 import Index from '../../components/tabs';
 import MoreLikeFilms from '../../components/more-like/more-like-films';
+import { useAppSelector } from '../../hooks';
 
-interface FilmPageProps {
-  films: Array<FilmCard>,
-}
 
-function FilmPage({films}: FilmPageProps) {
+function FilmPage() {
+  const {filmsServer} = useAppSelector((state) => state);
   const {id}= useParams();
-  const dataFilm = films.find((it) => it.id === Number(id));
+  const dataFilm = filmsServer.find((it) => it.id === Number(id));
 
   if(!dataFilm){
     return <NotFoundPage/>;
@@ -23,7 +21,7 @@ function FilmPage({films}: FilmPageProps) {
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src={dataFilm.img} alt={dataFilm.name} />
+            <img src={dataFilm.posterImage} alt={dataFilm.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -35,7 +33,7 @@ function FilmPage({films}: FilmPageProps) {
               <h2 className="film-card__title">{dataFilm.name}</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">{dataFilm.genre}</span>
-                <span className="film-card__year">{dataFilm.date}</span>
+                <span className="film-card__year">{dataFilm.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -60,16 +58,16 @@ function FilmPage({films}: FilmPageProps) {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
-              <img src={dataFilm.img} alt={dataFilm.name} width="218" height="327" />
+              <img src={dataFilm.posterImage} alt={dataFilm.name} width="218" height="327" />
             </div>
 
-            <Index {...dataFilm}/>
+            <Index {...dataFilm} />
 
           </div>
         </div>
       </section>
 
-      <MoreLikeFilms films={films} dataFilm={dataFilm}/>
+      <MoreLikeFilms films={filmsServer} dataFilm={dataFilm}/>
 
     </div>
   );

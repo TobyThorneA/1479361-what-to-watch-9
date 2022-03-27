@@ -1,12 +1,11 @@
 import {Link, useParams} from 'react-router-dom';
 import CommentSubmissionForm from '../../components/comment-submission-form/comment-submission-form';
-import { FilmCard } from '../../types';
+import { useAppSelector } from '../../hooks';
 import NotFoundPage from '../not-found-page/not-found-page';
-interface AddReviewPageProps {
-  films: Array<FilmCard>,
-}
 
-function AddReviewPage({films}: AddReviewPageProps) {
+
+function AddReviewPage() {
+  const films = useAppSelector((state) => state.filmsServer);
   const {id} = useParams();
   const dataFilm = films.find((it) => it.id === Number(id));
 
@@ -18,7 +17,7 @@ function AddReviewPage({films}: AddReviewPageProps) {
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src={dataFilm.img} alt={dataFilm.name} />
+          <img src={dataFilm.previewImage} alt={dataFilm.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -57,7 +56,7 @@ function AddReviewPage({films}: AddReviewPageProps) {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src={dataFilm.img} alt={dataFilm.name} width="218" height="327" />
+          <img src={dataFilm.previewImage} alt={dataFilm.name} width="218" height="327" />
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import { FilmCard } from '../../types';
+import { FilmServer } from '../../types';
 
-function Details(props: FilmCard) {
+function Details(props: FilmServer) {
   return (
     <div className="film-card__text film-card__row">
       <div className="film-card__text-col">
@@ -13,7 +13,7 @@ function Details(props: FilmCard) {
           <strong className="film-card__details-name">Starring</strong>
           <span className="film-card__details-value">
 
-            {props.starringDetails.map((it)=> (
+            {props.starring.map((it)=> (
               <>{it}<br /></>
             ))}
           </span>
@@ -30,7 +30,7 @@ function Details(props: FilmCard) {
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Released</strong>
-          <span className="film-card__details-value">{props.date}</span>
+          <span className="film-card__details-value">{props.released}</span>
         </p>
       </div>
     </div>
