@@ -1,3 +1,5 @@
+import { AuthorizationStatus } from '../const';
+
 export interface ReviewProps {
   id?: number;
   reviewText: string;
@@ -24,16 +26,94 @@ export interface FilmCard {
   reviews: Array<ReviewProps>;
 }
 
+export interface FilmServer {
+  id: number
+  name: string
+  posterImage: string
+  previewImage: string
+  backgroundImage: string
+  backgroundColor: string
+  videoLink: string
+  previewVideoLink: string
+  description: string
+  rating: number
+  scoresCount: number
+  director: string
+  starring: [string]
+  runTime: number
+  genre: string
+  released: number
+  isFavorite: boolean
+}
+
+export interface CommentsServer {
+  comment: string
+  date: string
+  id: number
+  rating: number
+  user: {
+  id: number
+  name: string
+  }
+}
+export interface PromoServer {
+  id: number
+  name: string
+  posterImage: string
+  previewImage: string
+  backgroundImage: string
+  backgroundColor: string
+  videoLink: string
+  previewVideoLink: string
+  description: string
+  rating: number
+  scoresCount: number
+  director: string
+  starring: Array<string>
+  runTime: number
+  genre: string
+  released: number
+  isFavorite: boolean
+}
+
+export interface UserComment {
+  comment: string
+  date: string
+  id: number
+  rating: number
+  user: {
+  id: number
+  name: string
+  }
+}
 export interface Promo {
   name: string;
   genre: string;
-  date: number;
-  imgSrc: string;
-  alt: string;
-  backgroundImg: string;
+  released: number;
+  posterImage: string;
+  backgroundImage: string;
 }
 
 export interface GenreFilterReducerProps {
   genre: string;
   filmsCount: number;
+  filmsServer: Array<FilmServer>;
+  promoServer: PromoServer ;
+  commentsServer: Array<CommentsServer>;
+  authorizationStatus: AuthorizationStatus;
+  isDataLoaded: boolean;
+  error: string;
 }
+
+export type AuthData = {
+  login: string;
+  password: string;
+};
+
+export type UserData = {
+  id: number;
+  email: string;
+  token: string;
+};
+
+export type ErrorType = unknown;

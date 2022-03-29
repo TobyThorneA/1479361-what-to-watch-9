@@ -1,11 +1,9 @@
-// import React from 'react'
-
-import { FilmCard } from '../../types';
+import { FilmServer } from '../../types';
 import Details from './details';
 import Overview from './overview';
 import ReviewCard from './review-card';
 
-function Tab(state:number,props: FilmCard) {
+function Tab(state:number,props: FilmServer) {
 
   switch (state) {
     case 1:
@@ -13,7 +11,7 @@ function Tab(state:number,props: FilmCard) {
     case 2:
       return <Details {...props}/>;
     case 3:
-      return <ReviewCard {...props}/>;
+      return <ReviewCard />;
   }
 
 }

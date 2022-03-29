@@ -1,16 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { useAppDispatch } from '../../hooks';
+import { logoutAction } from '../../store/api-action';
+// import { AppRoute } from '../../const';
 
 function Header() {
+  const dispatch = useAppDispatch();
+
   return (
     <header className="page-header film-card__head">
       <div className="logo">
-        <a href="main.html" className="logo__link">
+        <Link to="/" className="logo__link">
           <span className="logo__letter logo__letter--1">W</span>
           <span className="logo__letter logo__letter--2">T</span>
           <span className="logo__letter logo__letter--3">W</span>
-        </a>
+        </Link>
       </div>
       <ul className="user-block">
         <li className="user-block__item">
@@ -19,7 +23,15 @@ function Header() {
           </div>
         </li>
         <li className="user-block__item">
-          <Link to={AppRoute.SignIn} className="user-block__link">Sign out</Link>
+          <Link
+            onClick={(evt) => {
+              evt.preventDefault();
+              dispatch(logoutAction());
+            }}
+            to='/'
+            className="user-block__link"
+          >Sign out
+          </Link>
         </li>
       </ul>
     </header>

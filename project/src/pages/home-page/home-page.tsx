@@ -5,28 +5,32 @@ import PromoFilm from '../../components/promo-film/promo-film';
 import ShowMoreButton from '../../components/show-more-button/show-more-button';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { changeGenre } from '../../store/action';
-import { FilmCard, Promo} from '../../types';
 
-
-interface HomePageProps {
-  films: Array<FilmCard>,
-  promo: Promo;
-}
+// const genres = [
+//   'All Genres', 'Comedies', 'Crime',
+//   'Documentary','Dramas', 'Horror', 'Kids & Family',
+//   'Romance', 'Sci-Fi', 'Thrillers',
+// ];
 
 const genres = [
-  'All Genres', 'Comedies', 'Crime',
-  'Documentary','Dramas', 'Horror', 'Kids & Family',
-  'Romance', 'Sci-Fi', 'Thrillers',
+  'All Genres', 'Comedy', 'Crime',
+  'Adventure', 'Drama', 'Fantasy',
+  'Action', 'Thriller',
 ];
 
-function HomePage({films, promo}: HomePageProps) {
+function HomePage() {
 
+  ////////////////////////////////////////////////////////////////
+  const {filmsServer, promoServer} = useAppSelector((state) => state);
+  // // eslint-disable-next-line no-console
+  // console.log('state', filmsServer, promoServer, commentsServer);
+  // ////////////////////////////////////////////////////////////////
 
   const currentGenre = useAppSelector((state) => state.genre);
   const currentFilm = useAppSelector((state) => state.filmsCount);
   const dispatch = useAppDispatch();
 
-  const filterFilms = films.filter((it) => {
+  const filterFilms = filmsServer.filter((it) => {
     if('All Genres' === currentGenre){
       return it;
     }
@@ -41,7 +45,7 @@ function HomePage({films, promo}: HomePageProps) {
 
   return (
     <div>
-      <PromoFilm {...promo}/>
+      <PromoFilm {...promoServer}/>
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>

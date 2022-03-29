@@ -1,5 +1,4 @@
 import HomePage from '../../pages/home-page/home-page';
-import {FilmCard, Promo} from '../../types';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import AddReviewPage from '../../pages/add-review-page/add-review-page';
@@ -9,35 +8,45 @@ import SignInPage from '../../pages/sign-in-page/sign-in-page';
 import MyListPage from '../../pages/my-list-page/my-list-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../../components/private-route/private-route';
-interface AppProps {
-  films: Array<FilmCard>,
-  promo: Promo;
-}
+import {  useAppSelector } from '../../hooks';
+import LoadingScreen from '../loadin-screen/loading-screen';
 
-function App(props: AppProps) {
+
+export const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean =>
+  authorizationStatus === AuthorizationStatus.Unknown;
+
+function App() {
+
+  const {authorizationStatus, isDataLoaded} = useAppSelector((state) => state);
+
+  if(isCheckedAuth(authorizationStatus) || !isDataLoaded){
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<HomePage {...props}/>}
+          element={<HomePage />}
         />
         <Route
           path={AppRoute.MyList}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <PrivateRoute authorizationStatus={authorizationStatus}>
               <MyListPage/>
             </PrivateRoute>
           }
         />
         <Route
           path={AppRoute.Player}
-          element={<PlayerPage {...props}/>}
+          element={<PlayerPage />}
         />
         <Route
           path={AppRoute.Film}
-          element={<FilmPage {...props}/>}
+          element={<FilmPage />}
         />
         <Route
           path={AppRoute.SignIn}
@@ -45,7 +54,7 @@ function App(props: AppProps) {
         />
         <Route
           path={AppRoute.AddReview}
-          element={<AddReviewPage {...props}/>}
+          element={<AddReviewPage />}
         />
         <Route
           path='*'

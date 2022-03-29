@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef} from 'react';
-import { FilmCard } from '../../types';
+import { FilmServer } from '../../types';
 
-function VideoPlayer(props: FilmCard) {
+function VideoPlayer(props: FilmServer) {
   const [stateId, setStateId] = useState(-1);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -12,7 +12,7 @@ function VideoPlayer(props: FilmCard) {
       if(videoRef.current !== null){
         videoRef.current.pause();
         if(stateId >= 0){
-          videoRef.current.src = props.video;
+          videoRef.current.src = props.videoLink;
           videoRef.current.play();
         }
       }
@@ -34,7 +34,7 @@ function VideoPlayer(props: FilmCard) {
       <video
         muted
         ref={videoRef}
-        poster={props.img}
+        poster={props.previewImage}
         width='280'
         height='175'
       />

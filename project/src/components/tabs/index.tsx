@@ -1,7 +1,7 @@
-import { FilmCard } from '../../types/index';
+import { FilmServer } from '../../types/index';
 import Tabs from './tabs';
 
-function Index(props: FilmCard) {
+function Index(props: FilmServer) {
 
   return (
 

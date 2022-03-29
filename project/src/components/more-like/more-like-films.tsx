@@ -1,9 +1,9 @@
 import React from 'react';
-import { FilmCard } from '../../types';
+import { FilmServer } from '../../types';
 import MoreLikeFilm from './more-like-film';
 interface MoreLikeFilmsProps {
-  films: Array<FilmCard>;
-  dataFilm: FilmCard;
+  films: Array<FilmServer>;
+  dataFilm: FilmServer;
 }
 
 function MoreLikeFilms({films, dataFilm}: MoreLikeFilmsProps) {
