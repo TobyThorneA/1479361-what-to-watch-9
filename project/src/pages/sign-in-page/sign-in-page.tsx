@@ -14,13 +14,14 @@ function SignInPage() {
 
   const onSubmit = (authData: AuthData) => {
     dispatch(loginAction(authData));
+    navigate(AppRoute.Main);
   };
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
     if(loginRef.current !== null && passwordRef.current !== null){
-      onSubmit({
+      return onSubmit({
         login: loginRef.current.value,
         password: passwordRef.current.value,
       });
@@ -70,7 +71,6 @@ function SignInPage() {
           </div>
           <div className="sign-in__submit">
             <button
-              onClick={() => navigate(AppRoute.MyList)}
               className="sign-in__btn"
               type="submit"
             >Sign in

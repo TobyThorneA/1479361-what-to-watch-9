@@ -39,11 +39,16 @@ export interface FilmServer {
   rating: number
   scoresCount: number
   director: string
-  starring: [string]
+  starring: Array<string>
   runTime: number
   genre: string
   released: number
   isFavorite: boolean
+}
+
+export interface SubmitComments {
+comment: string
+// rating?: number
 }
 
 export interface CommentsServer {
@@ -98,11 +103,22 @@ export interface GenreFilterReducerProps {
   genre: string;
   filmsCount: number;
   filmsServer: Array<FilmServer>;
+  favoriteFilmsServer: Array<FilmServer>;
+  moreLikeFilmsServer: Array<FilmServer>;
+  currentFilmServer: FilmServer;
   promoServer: PromoServer ;
   commentsServer: Array<CommentsServer>;
   authorizationStatus: AuthorizationStatus;
   isDataLoaded: boolean;
   error: string;
+}
+
+export interface Comment {
+  id: number;
+  dataComment :{
+    comment: string;
+    rating: number;
+  };
 }
 
 export type AuthData = {

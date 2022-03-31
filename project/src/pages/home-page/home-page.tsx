@@ -19,12 +19,7 @@ const genres = [
 ];
 
 function HomePage() {
-
-  ////////////////////////////////////////////////////////////////
   const {filmsServer, promoServer} = useAppSelector((state) => state);
-  // // eslint-disable-next-line no-console
-  // console.log('state', filmsServer, promoServer, commentsServer);
-  // ////////////////////////////////////////////////////////////////
 
   const currentGenre = useAppSelector((state) => state.genre);
   const currentFilm = useAppSelector((state) => state.filmsCount);

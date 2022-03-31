@@ -1,5 +1,5 @@
 import HomePage from '../../pages/home-page/home-page';
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import AddReviewPage from '../../pages/add-review-page/add-review-page';
 import FilmPage from '../../pages/film-page/film-page';
@@ -10,6 +10,8 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../../components/private-route/private-route';
 import {  useAppSelector } from '../../hooks';
 import LoadingScreen from '../loadin-screen/loading-screen';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browser-history';
 
 
 export const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean =>
@@ -26,7 +28,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Main}
@@ -61,7 +63,7 @@ function App() {
           element={<NotFoundPage/>}
         />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 
 }

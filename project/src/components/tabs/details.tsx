@@ -1,19 +1,19 @@
-import React from 'react';
-import { FilmServer } from '../../types';
+import { useAppSelector } from '../../hooks';
 
-function Details(props: FilmServer) {
+function Details() {
+  const {currentFilmServer } = useAppSelector((state) => state);
   return (
     <div className="film-card__text film-card__row">
       <div className="film-card__text-col">
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Director</strong>
-          <span className="film-card__details-value">{props.director}</span>
+          <span className="film-card__details-value">{currentFilmServer.director}</span>
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Starring</strong>
           <span className="film-card__details-value">
 
-            {props.starring.map((it)=> (
+            {currentFilmServer.starring.map((it)=> (
               <>{it}<br /></>
             ))}
           </span>
@@ -22,15 +22,15 @@ function Details(props: FilmServer) {
       <div className="film-card__text-col">
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Run Time</strong>
-          <span className="film-card__details-value">{props.runTime}</span>
+          <span className="film-card__details-value">{currentFilmServer.runTime}</span>
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Genre</strong>
-          <span className="film-card__details-value">{props.genre}</span>
+          <span className="film-card__details-value">{currentFilmServer.genre}</span>
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Released</strong>
-          <span className="film-card__details-value">{props.released}</span>
+          <span className="film-card__details-value">{currentFilmServer.released}</span>
         </p>
       </div>
     </div>

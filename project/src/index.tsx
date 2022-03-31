@@ -4,15 +4,18 @@ import { Provider } from 'react-redux';
 import App from './components/app/app';
 import ErrorMessage from './components/error-message/error-message';
 import { store } from './store';
-import { fetchFilmAction, checkAuthAction, fetchPromoAction, fetchCommentsAction } from './store/api-action';
+import {
+  fetchFilmsAction,
+  checkAuthAction,
+  fetchPromoAction,
+  fetchFavoriteFilmsAction
+} from './store/api-action';
 
 
-store.dispatch(fetchFilmAction());
+store.dispatch(fetchFilmsAction());
 store.dispatch(fetchPromoAction());
-store.dispatch(fetchCommentsAction(1));
 store.dispatch(checkAuthAction());
-
-
+store.dispatch(fetchFavoriteFilmsAction());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
