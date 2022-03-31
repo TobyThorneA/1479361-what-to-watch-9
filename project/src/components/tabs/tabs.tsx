@@ -1,30 +1,11 @@
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { store } from '../../store';
-import { fetchCommentsAction } from '../../store/api-action';
 import { FilmServer } from '../../types';
 import Tab from './tab';
 
-interface data {
-
-  title: string,
-  key: number,
-
-}
 
 function Tabs(dataFilm: FilmServer) {
   const [activeKey, setActiveKey] = useState(1);
-
-  const func = (it: data, film: FilmServer) => {
-    if(it.title === 'Review'){
-      const event = (evt: FormEvent) => {
-        evt.preventDefault();
-        store.dispatch(fetchCommentsAction(film.id));
-      };
-      return event;
-    }
-  };
-
   const tabs = [
     {
       title: 'Overview',
@@ -46,7 +27,6 @@ function Tabs(dataFilm: FilmServer) {
         <ul className="film-nav__list">
           {tabs.map((it) => (
             <li key={it.key}
-              onClick={func(it, dataFilm)}
               className={`film-nav__item
               ${activeKey === it.key
               ? 'film-nav__item--active'
@@ -63,7 +43,7 @@ function Tabs(dataFilm: FilmServer) {
           ))}
         </ul>
       </nav>
-      {Tab(activeKey, dataFilm)}
+      {Tab(activeKey)}
     </div>
   );
 }

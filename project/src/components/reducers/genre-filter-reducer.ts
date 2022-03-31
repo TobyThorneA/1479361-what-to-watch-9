@@ -1,6 +1,15 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus } from '../../const';
-import { changeGenre, loadCommentsServer, loadFilmsServer, loadPromoServer, requireAuthorization, setError, showMore } from '../../store/action';
+import { changeGenre,
+  loadCommentsServer,
+  loadCurrentFilmServer,
+  loadFavoriteFilmsServer,
+  loadFilmsServer,
+  loadMoreLikeFilmsServer,
+  loadPromoServer,
+  requireAuthorization,
+  setError,
+  showMore, trueFalse, trueFalseFilm } from '../../store/action';
 import { GenreFilterReducerProps } from '../../types';
 
 const promoServ = {
@@ -23,11 +32,13 @@ const promoServ = {
   isFavorite: true,
 };
 
-
 const defaultGenre: GenreFilterReducerProps = {
   genre: 'All Genres',
   filmsCount: 8,
   filmsServer: [],
+  favoriteFilmsServer: [],
+  moreLikeFilmsServer: [],
+  currentFilmServer: promoServ,
   promoServer: promoServ,
   commentsServer: [],
   authorizationStatus: AuthorizationStatus.Unknown,
@@ -47,6 +58,15 @@ const reducer = createReducer(defaultGenre, (builder) => {
     .addCase(loadFilmsServer, (state, action) => {
       state.filmsServer = action.payload;
     })
+    .addCase(loadCurrentFilmServer, (state, action) => {
+      state.currentFilmServer = action.payload;
+    })
+    .addCase(loadFavoriteFilmsServer, (state, action) => {
+      state.favoriteFilmsServer = action.payload;
+    })
+    .addCase(loadMoreLikeFilmsServer, (state, action) => {
+      state.moreLikeFilmsServer = action.payload;
+    })
     .addCase(loadPromoServer, (state, action) => {
       state.promoServer = action.payload;
     })
@@ -59,6 +79,12 @@ const reducer = createReducer(defaultGenre, (builder) => {
     })
     .addCase(setError, (state,action) => {
       state.error = action.payload;
+    })
+    .addCase(trueFalse, (state, action) => {
+      state.promoServer.isFavorite = action.payload;
+    })
+    .addCase(trueFalseFilm, (state, action) => {
+      state.currentFilmServer.isFavorite = action.payload;
     });
 });
 

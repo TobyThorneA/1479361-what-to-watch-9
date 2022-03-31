@@ -1,11 +1,17 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks';
-import { logoutAction } from '../../store/api-action';
-// import { AppRoute } from '../../const';
+import { AuthorizationStatus } from '../../const';
+import { useAppSelector } from '../../hooks';
+import SignIn from './sign-in';
+import SignOut from './sign-out';
 
 function Header() {
-  const dispatch = useAppDispatch();
+  const {authorizationStatus} = useAppSelector((state) => state);
+  const signInOrSignOut = () => {
+    if(authorizationStatus === AuthorizationStatus.Auth){
+      return <SignOut/>;
+    }
+    return <SignIn/>;
+  };
 
   return (
     <header className="page-header film-card__head">
@@ -16,24 +22,7 @@ function Header() {
           <span className="logo__letter logo__letter--3">W</span>
         </Link>
       </div>
-      <ul className="user-block">
-        <li className="user-block__item">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
-        </li>
-        <li className="user-block__item">
-          <Link
-            onClick={(evt) => {
-              evt.preventDefault();
-              dispatch(logoutAction());
-            }}
-            to='/'
-            className="user-block__link"
-          >Sign out
-          </Link>
-        </li>
-      </ul>
+      {signInOrSignOut()}
     </header>
   );
 }
