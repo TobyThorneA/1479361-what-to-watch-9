@@ -26,7 +26,7 @@ export interface FilmCard {
   reviews: Array<ReviewProps>;
 }
 
-export interface FilmServer {
+export interface Film {
   id: number
   name: string
   posterImage: string
@@ -45,12 +45,6 @@ export interface FilmServer {
   released: number
   isFavorite: boolean
 }
-
-export interface SubmitComments {
-comment: string
-// rating?: number
-}
-
 export interface CommentsServer {
   comment: string
   date: string
@@ -102,12 +96,12 @@ export interface Promo {
 export interface GenreFilterReducerProps {
   genre: string;
   filmsCount: number;
-  filmsServer: Array<FilmServer>;
-  favoriteFilmsServer: Array<FilmServer>;
-  moreLikeFilmsServer: Array<FilmServer>;
-  currentFilmServer: FilmServer;
-  promoServer: PromoServer ;
-  commentsServer: Array<CommentsServer>;
+  allFilms: Array<Film>;
+  favoriteFilms: Array<Film>;
+  moreLikeFilms: Array<Film>;
+  currentFilm: Film;
+  promoFilm: PromoServer ;
+  comments: Array<CommentsServer>;
   authorizationStatus: AuthorizationStatus;
   isDataLoaded: boolean;
   error: string;
@@ -117,8 +111,28 @@ export interface Comment {
   id: number;
   dataComment :{
     comment: string;
+    rating: number | null;
+  };
+}
+
+export interface PostComment {
+  id: number;
+  dataComment :{
+    comment: string;
     rating: number;
   };
+  token: string;
+}
+
+export interface FilmStatus {
+  id:number;
+  status: number;
+}
+
+export interface PostFilmStatus {
+  id:number;
+  status: number;
+  token: string;
 }
 
 export type AuthData = {

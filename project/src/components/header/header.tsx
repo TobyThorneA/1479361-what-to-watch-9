@@ -1,17 +1,30 @@
 import { Link } from 'react-router-dom';
 import { AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
-import SignIn from './sign-in';
-import SignOut from './sign-out';
+import SignInButton from '../sign-in-button/sign-in-button';
+import SignOutButton from '../sign-out-button/sign-out-button';
 
-function Header() {
+interface HeaderProps {
+  element?: JSX.Element
+}
+
+function Header({element}: HeaderProps) {
   const {authorizationStatus} = useAppSelector((state) => state);
   const signInOrSignOut = () => {
     if(authorizationStatus === AuthorizationStatus.Auth){
-      return <SignOut/>;
+      return <SignOutButton/>;
     }
-    return <SignIn/>;
+    return <SignInButton/>;
   };
+
+
+  // eslint-disable-next-line no-console
+  // console.log('element', element);
+  // const elementInHeader = (data : HeaderProps) => {
+  //   if(data){
+  //     return data;
+  //   }
+  // };
 
   return (
     <header className="page-header film-card__head">
@@ -21,6 +34,7 @@ function Header() {
           <span className="logo__letter logo__letter--2">T</span>
           <span className="logo__letter logo__letter--3">W</span>
         </Link>
+        {/* {elementInHeader(element)} */}
       </div>
       {signInOrSignOut()}
     </header>

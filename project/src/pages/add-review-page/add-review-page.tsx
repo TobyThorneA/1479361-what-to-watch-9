@@ -5,7 +5,7 @@ import NotFoundPage from '../not-found-page/not-found-page';
 
 
 function AddReviewPage() {
-  const films = useAppSelector((state) => state.filmsServer);
+  const films = useAppSelector((state) => state.allFilms);
   const {id} = useParams();
   const dataFilm = films.find((it) => it.id === Number(id));
 

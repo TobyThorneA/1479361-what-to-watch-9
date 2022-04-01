@@ -60,11 +60,15 @@ function SignInPage() {
             </div>
             <div className="sign-in__field">
               <input
+                required
+                min={1}
+                // autoComplete='on'
                 ref={passwordRef}
                 className="sign-in__input"
                 type="password" placeholder="Password"
                 name="user-password"
                 id="user-password"
+                // pattern=""
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>

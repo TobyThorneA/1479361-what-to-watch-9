@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef} from 'react';
-import { FilmServer } from '../../types';
+import { Film } from '../../types';
 
-function VideoPlayer(props: FilmServer) {
+function VideoPlayer(props: Film) {
   const [stateId, setStateId] = useState(-1);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);

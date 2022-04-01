@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FilmServer } from '../../types';
+import { Film } from '../../types';
 import Tab from './tab';
 
 
-function Tabs(dataFilm: FilmServer) {
+function Tabs(dataFilm: Film) {
   const [activeKey, setActiveKey] = useState(1);
   const tabs = [
     {

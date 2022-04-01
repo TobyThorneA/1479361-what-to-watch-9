@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
-import { FilmServer } from '../../types';
 
-function AddReviwButton(props: FilmServer) {
+
+interface addReviewButtonProps {
+  currentId: number;
+}
+
+function AddReviwButton({currentId}: addReviewButtonProps) {
   return (
     <Link to={
-      `/films/${props.id}/review`
+      `/films/${currentId}/review`
     }
-    key={props.id}
+    key={currentId}
     className="btn film-card__button"
     >Add review
     </Link>

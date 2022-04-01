@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../hooks';
 import { store } from '../../store';
 import { fetchFavoriteFilmsAction, logoutAction } from '../../store/api-action';
 
-function SignOut() {
+function SignOutButton() {
   const dispatch = useAppDispatch();
 
   return (
@@ -31,4 +31,4 @@ function SignOut() {
   );
 }
 
-export default SignOut;
+export default SignOutButton;

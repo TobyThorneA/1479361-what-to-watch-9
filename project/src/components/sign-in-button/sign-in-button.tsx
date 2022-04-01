@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function SignIn() {
+function SignInButton() {
   return (
     <div className="user-block">
       <Link to="/login" className="user-block__link">Sign in</Link>
@@ -8,4 +8,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignInButton;

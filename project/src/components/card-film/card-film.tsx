@@ -1,8 +1,8 @@
-import {  FilmServer } from '../../types';
+import {  Film } from '../../types';
 import { Link } from 'react-router-dom';
 import VideoPlayer from '../video-player/video-player';
 
-function CardFilm(props: FilmServer) {
+function CardFilm(props: Film) {
 
   return (
     <article className="small-film-card catalog__films-card">

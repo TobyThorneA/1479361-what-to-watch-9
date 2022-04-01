@@ -3,7 +3,7 @@ import { CommentsServer } from '../../types';
 import Review from './review';
 
 function ReviewCard() {
-  const selector = useAppSelector((state) => state.commentsServer);
+  const selector = useAppSelector((state) => state.comments);
   const evenReviews: Array<CommentsServer> = [];
   const oddReviews: Array<CommentsServer>= [];
   selector.forEach((it, i) => {

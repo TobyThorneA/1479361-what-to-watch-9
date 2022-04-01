@@ -3,12 +3,17 @@ import { useAppSelector } from '../../hooks';
 import { PromoServer } from '../../types';
 import Header from '../header/header';
 import MyListButton from './my-list-button';
+// import MyListButton from '../my-list-button/my-list-button';
+
 
 function PromoFilm(props: PromoServer ) {
   const {authorizationStatus} = useAppSelector((state) => state);
+  // const checkinForAPromoFilm = true;
+
   const renderMyListButton = () => {
     if(authorizationStatus === AuthorizationStatus.Auth){
-      return <MyListButton/>;
+      // return <MyListButton checkinForAPromoFilm={checkinForAPromoFilm}/>;
+      return <MyListButton />;
     }
   };
   return (

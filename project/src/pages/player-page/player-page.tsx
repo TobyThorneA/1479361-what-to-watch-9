@@ -4,9 +4,9 @@ import NotFoundPage from '../not-found-page/not-found-page';
 
 
 function PlayerPage() {
-  const {filmsServer} = useAppSelector((state) => state);
+  const {allFilms} = useAppSelector((state) => state);
   const {id} = useParams();
-  const dataFilm = filmsServer.find((it) => it.id === Number(id));
+  const dataFilm = allFilms.find((it) => it.id === Number(id));
 
   if(!dataFilm){
     return <NotFoundPage/>;

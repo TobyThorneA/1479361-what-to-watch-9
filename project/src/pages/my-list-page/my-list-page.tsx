@@ -1,16 +1,24 @@
 // import Header from '../../components/header/header';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
-import FavoriteFilm from './favoriteFilm';
+import FavoriteFilm from '../../components/favorite-film/favorite-film';
+// import Header from '../../components/header/header';
+import { Link } from 'react-router-dom';
+
+// function element() {
+//   return (
+//     <h1 className="page-title user-page__title">My list</h1>
+//   );
+// }
 
 function MyListPage() {
-  const {favoriteFilmsServer} = useAppSelector((state) => state);
+  const {favoriteFilms} = useAppSelector((state) => state);
   // eslint-disable-next-line no-console
-  console.log('myListFavoriteFilms', favoriteFilmsServer);
+  console.log('myListFavoriteFilms', favoriteFilms);
   return (
     <div className="user-page">
 
-      {/* <Header/> */}
+      {/* <Header element={element()}/> */}
       <header className="page-header user-page__head">
         <div className="logo">
           <Link to="/" className="logo__link">
@@ -39,7 +47,7 @@ function MyListPage() {
 
         <div className="catalog__films-list">
 
-          {favoriteFilmsServer.map((it) =>
+          {favoriteFilms.map((it) =>
             <FavoriteFilm key={it.id} {...it}/>,
           )}
 
