@@ -11,8 +11,8 @@ import {
   requireAuthorization,
   setError,
   showMore,
-  statusCurrentFilm,
-  statusPromoFilm
+  setCurrentFilmStatus,
+  setPromoFilmStatus
 } from '../../store/action';
 import { GenreFilterReducerProps } from '../../types';
 
@@ -36,6 +36,14 @@ const dataFilm = {
   isFavorite: true,
 };
 
+const dataUserAcc = {
+  avatarUrl: '',
+  email: '',
+  id: 0,
+  name: '',
+  token: '',
+};
+
 const defaultGenre: GenreFilterReducerProps = {
   genre: 'All Genres',
   filmsCount: 8,
@@ -48,6 +56,7 @@ const defaultGenre: GenreFilterReducerProps = {
   authorizationStatus: AuthorizationStatus.Unknown,
   isDataLoaded: false,
   error: '',
+  dataUser: dataUserAcc,
 };
 
 const reducer = createReducer(defaultGenre, (builder) => {
@@ -84,10 +93,10 @@ const reducer = createReducer(defaultGenre, (builder) => {
     .addCase(setError, (state,action) => {
       state.error = action.payload;
     })
-    .addCase(statusPromoFilm, (state, action) => {
+    .addCase(setPromoFilmStatus, (state, action) => {
       state.promoFilm.isFavorite = action.payload;
     })
-    .addCase(statusCurrentFilm, (state, action) => {
+    .addCase(setCurrentFilmStatus, (state, action) => {
       state.currentFilm.isFavorite = action.payload;
     });
 });

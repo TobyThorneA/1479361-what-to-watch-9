@@ -3,7 +3,7 @@ import { useAppSelector } from '../../hooks';
 import { Film } from '../../types';
 
 function Overview() {
-  const {currentFilm} = useAppSelector((state) => state);
+  const currentFilm = useAppSelector((state) => state.currentFilm);
   const filmScore = (film: Film) => {
     if(film.rating <= 3){
       return  FILM_SCORE.BAD;

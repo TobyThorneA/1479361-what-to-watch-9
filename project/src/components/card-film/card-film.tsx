@@ -1,4 +1,4 @@
-import {  Film } from '../../types';
+import { Film } from '../../types';
 import { Link } from 'react-router-dom';
 import VideoPlayer from '../video-player/video-player';
 

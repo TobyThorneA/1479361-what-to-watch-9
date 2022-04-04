@@ -3,19 +3,11 @@ import { useAppSelector } from '../../hooks';
 import { PromoServer } from '../../types';
 import Header from '../header/header';
 import MyListButton from './my-list-button';
-// import MyListButton from '../my-list-button/my-list-button';
 
 
 function PromoFilm(props: PromoServer ) {
-  const {authorizationStatus} = useAppSelector((state) => state);
-  // const checkinForAPromoFilm = true;
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
-  const renderMyListButton = () => {
-    if(authorizationStatus === AuthorizationStatus.Auth){
-      // return <MyListButton checkinForAPromoFilm={checkinForAPromoFilm}/>;
-      return <MyListButton />;
-    }
-  };
   return (
     <section className="film-card">
       <div className="film-card__bg">
@@ -46,7 +38,7 @@ function PromoFilm(props: PromoServer ) {
                 <span>Play</span>
               </button>
 
-              {renderMyListButton()}
+              {authorizationStatus === AuthorizationStatus.Auth? <MyListButton/>: ''}
 
             </div>
           </div>

@@ -9,22 +9,7 @@ interface HeaderProps {
 }
 
 function Header({element}: HeaderProps) {
-  const {authorizationStatus} = useAppSelector((state) => state);
-  const signInOrSignOut = () => {
-    if(authorizationStatus === AuthorizationStatus.Auth){
-      return <SignOutButton/>;
-    }
-    return <SignInButton/>;
-  };
-
-
-  // eslint-disable-next-line no-console
-  // console.log('element', element);
-  // const elementInHeader = (data : HeaderProps) => {
-  //   if(data){
-  //     return data;
-  //   }
-  // };
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
   return (
     <header className="page-header film-card__head">
@@ -36,7 +21,10 @@ function Header({element}: HeaderProps) {
         </Link>
         {/* {elementInHeader(element)} */}
       </div>
-      {signInOrSignOut()}
+      {authorizationStatus ===
+      AuthorizationStatus.Auth
+        ? <SignOutButton/>
+        : <SignInButton/>}
     </header>
   );
 }

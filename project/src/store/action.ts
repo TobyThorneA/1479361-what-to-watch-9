@@ -12,6 +12,7 @@ export const loadPromoFilm = createAction<PromoServer>('LOAD_PROMO_SERVER');
 export const loadComments = createAction<Array<CommentsServer>>('LOAD_COMMENTS_SERVER');
 export const requireAuthorization = createAction<AuthorizationStatus>('REQUARE_AUTHORIZATION');
 export const setError = createAction<string>('SET_ERROR');
-export const statusPromoFilm = createAction<boolean>('TRUE_FALSE');
-export const statusCurrentFilm = createAction<boolean>('TRUE_FALSE_FILM');
+export const setPromoFilmStatus = createAction<boolean>('TRUE_FALSE');
+export const setCurrentFilmStatus = createAction<boolean>('TRUE_FALSE_FILM');
 export const redirectToRoute = createAction<AppRoute>('REDIRECT_TO_ROUTE');
+

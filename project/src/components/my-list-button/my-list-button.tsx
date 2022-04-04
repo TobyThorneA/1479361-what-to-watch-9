@@ -1,39 +1,23 @@
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { store } from '../../store';
-import { statusCurrentFilm, statusPromoFilm } from '../../store/action';
+import { setCurrentFilmStatus, setPromoFilmStatus } from '../../store/action';
 import {  addFilmStatusAction } from '../../store/api-action';
 
-interface FilmPageProps {
-  checkinForAPromoFilm: boolean
-}
 
-function MyListButton({checkinForAPromoFilm}: FilmPageProps) {
+function MyListButton() {
 
   const dispatch = useAppDispatch();
-  const {currentFilm, promoFilm} = useAppSelector((state) => state);
+  const currentFilm = useAppSelector((state) => state.currentFilm);
 
   const clickMyListButton = () => {
 
-    let data = {
+    const data = {
       id: currentFilm.id,
       status: Number(!currentFilm.isFavorite),
     };
 
-    if(checkinForAPromoFilm){
-      if(promoFilm.id === currentFilm.id){
-        dispatch(statusPromoFilm(!!data.status));
-        store.dispatch(addFilmStatusAction(data));
-      }else if(promoFilm.id !== currentFilm.id){
-        data = {
-          id: promoFilm.id,
-          status: Number(!promoFilm.isFavorite),
-        };
-        dispatch(statusCurrentFilm(!!data.status));
-        store.dispatch(addFilmStatusAction(data));
-      }
-    }
-
-    dispatch(statusCurrentFilm(!!data.status));
+    dispatch(setPromoFilmStatus(!!data.status));
+    dispatch(setCurrentFilmStatus(!!data.status));
     store.dispatch(addFilmStatusAction(data));
 
   };

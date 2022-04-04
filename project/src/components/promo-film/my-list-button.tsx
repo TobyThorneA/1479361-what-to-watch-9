@@ -1,11 +1,12 @@
 import {  useAppDispatch, useAppSelector } from '../../hooks';
 import { store } from '../../store';
-import { statusPromoFilm } from '../../store/action';
+import { setPromoFilmStatus } from '../../store/action';
 import { addFilmStatusAction } from '../../store/api-action';
 
 function MyListButton() {
   const dispatch = useAppDispatch();
-  const {promoFilm} = useAppSelector((state) => state);
+  const promoFilm = useAppSelector((state) => state.promoFilm);
+
 
   const clickMyListButton = () => {
     const data = {
@@ -13,7 +14,7 @@ function MyListButton() {
       status: Number(!promoFilm.isFavorite),
     };
 
-    dispatch(statusPromoFilm(!!data.status));
+    dispatch(setPromoFilmStatus(!!data.status));
     store.dispatch(addFilmStatusAction(data));
 
 

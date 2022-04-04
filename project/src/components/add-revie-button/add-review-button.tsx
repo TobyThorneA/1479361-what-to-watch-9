@@ -10,7 +10,6 @@ function AddReviwButton({currentId}: addReviewButtonProps) {
     <Link to={
       `/films/${currentId}/review`
     }
-    key={currentId}
     className="btn film-card__button"
     >Add review
     </Link>

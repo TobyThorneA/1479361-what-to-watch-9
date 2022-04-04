@@ -6,37 +6,37 @@ import { store } from '../../store';
 import { addCommentsAction, fetchCommentsAction } from '../../store/api-action';
 import { Film } from '../../types';
 
-// const starss = [...Array(10).keys()];
-const stars = [10,9,8,7,6,5,4,3,2,1];
-
-interface CommentSubmisionFormProps {
+const stars = [...Array(10).keys()];
+interface PostFormValues {
   comment: string;
-  rating: number | null;
+  rating: number;
 }
+
+const disabledPostButton = (postFormValues: PostFormValues): boolean => {
+  if(postFormValues.comment.length > 50
+    && postFormValues.comment.length < 400
+    && postFormValues.rating > 1){
+    return false;
+  }
+  return true;
+};
 
 function CommentSubmissionForm(props: Film) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-
-  const disabledPostButton = (post: CommentSubmisionFormProps): boolean => {
-    if(post.comment.length < 50 || post.comment.length > 400 || post.rating === null){
-      return true;
-    }
-    return false;
-  };
-
-  const [statePost, setStatePost] = useState<CommentSubmisionFormProps>({
+  const [postFormValues, setPostFormValues] = useState<PostFormValues>({
     comment: '',
-    rating: null,
+    rating: 0,
   });
+
   const fieldChangeHandler = (evt: FormEvent<HTMLFormElement> ) => {
     evt.preventDefault();
 
     const dataCommentFilm = {
       id: props.id,
       dataComment: {
-        comment: statePost.comment,
-        rating: statePost.rating,
+        comment: postFormValues.comment,
+        rating: postFormValues.rating,
       },
     };
 
@@ -51,17 +51,16 @@ function CommentSubmissionForm(props: Film) {
         <div className="rating">
           <div className="rating__stars">
             {stars.map((it)=> (
-              <div key={it} onClick={() => setStatePost({rating: it , comment: statePost.comment})}>
+              <div key={it} onClick={() => setPostFormValues({rating: it + 1 , comment: postFormValues.comment})}>
                 <input className="rating__input" id={`star-${it}`} type="radio" name="rating" value={it} />
                 <label className="rating__label" htmlFor={`star-${it}`}>Rating {it + 1}</label>
-              </div>))}
+              </div>)).reverse()}
           </div>
         </div>
 
-        <div  className="add-review__text">
+        <div className="add-review__text">
           <textarea
-            disabled
-            onChange={(evt) => setStatePost({comment: evt.target.value, rating: statePost.rating})}
+            onChange={(evt) => setPostFormValues({comment: evt.target.value, rating: postFormValues.rating})}
             className="add-review__textarea"
             name="review-text" id="review-text"
             placeholder="Review text"
@@ -70,7 +69,7 @@ function CommentSubmissionForm(props: Film) {
           >
           </textarea>
           <div className="add-review__submit">
-            <button disabled={disabledPostButton(statePost)} className="add-review__btn" type="submit">Post</button>
+            <button disabled={disabledPostButton(postFormValues)} className="add-review__btn" type="submit">Post</button>
           </div>
 
         </div>

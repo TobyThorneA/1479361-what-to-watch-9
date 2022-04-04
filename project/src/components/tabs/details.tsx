@@ -1,7 +1,7 @@
 import { useAppSelector } from '../../hooks';
 
 function Details() {
-  const {currentFilm } = useAppSelector((state) => state);
+  const currentFilm = useAppSelector((state) => state.currentFilm);
   return (
     <div className="film-card__text film-card__row">
       <div className="film-card__text-col">

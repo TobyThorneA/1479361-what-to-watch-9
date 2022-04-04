@@ -1,4 +1,4 @@
-import { AuthorizationStatus } from '../const';
+import { AuthorizationStatus, DataUser } from '../const';
 
 export interface ReviewProps {
   id?: number;
@@ -105,6 +105,7 @@ export interface GenreFilterReducerProps {
   authorizationStatus: AuthorizationStatus;
   isDataLoaded: boolean;
   error: string;
+  dataUser: DataUser;
 }
 
 export interface Comment {

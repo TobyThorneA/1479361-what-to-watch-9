@@ -14,10 +14,11 @@ const genres = [
 ];
 
 function HomePage() {
-  const {allFilms, promoFilm} = useAppSelector((state) => state);
-
+  const allFilms = useAppSelector((state) => state.allFilms);
+  const promoFilm = useAppSelector((state) => state.promoFilm);
   const currentGenre = useAppSelector((state) => state.genre);
   const currentFilm = useAppSelector((state) => state.filmsCount);
+
   const dispatch = useAppDispatch();
 
   const filterFilms = allFilms.filter((it) => {

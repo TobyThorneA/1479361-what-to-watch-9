@@ -14,10 +14,9 @@ import AddReviwButton from '../../components/add-revie-button/add-review-button'
 
 
 function FilmPage() {
-  const { authorizationStatus, currentFilm} = useAppSelector((state) => state);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const currentFilm = useAppSelector((state) => state.currentFilm);
   const {id}= useParams();
-  const checkinForAPromoFilm = false;
-
 
   useEffect(() => {
     store.dispatch(fetchCurrentFilmsAction(Number(id)));
@@ -28,19 +27,6 @@ function FilmPage() {
   if(!currentFilm || !currentFilm.id){
     return <NotFoundPage/>;
   }
-
-
-  const renderAddReviewButton = (currentId: number) => {
-    if(authorizationStatus === AuthorizationStatus.Auth){
-      return <AddReviwButton currentId = {currentId} />;
-    }
-  };
-
-  const renderMyListButton = () => {
-    if(authorizationStatus === AuthorizationStatus.Auth){
-      return <MyListButton checkinForAPromoFilm={checkinForAPromoFilm} />;
-    }
-  };
 
   return (
     <div>
@@ -69,8 +55,8 @@ function FilmPage() {
                   </svg>
                   <Link to={`/player/${currentFilm.id}`} key={currentFilm.id}><span>Play</span></Link>
                 </button>
-                {renderMyListButton()}
-                {renderAddReviewButton(currentFilm.id)}
+                {authorizationStatus === AuthorizationStatus.Auth? <MyListButton/>: ''}
+                {authorizationStatus === AuthorizationStatus.Auth? <AddReviwButton currentId = {currentFilm.id} /> : ''}
               </div>
             </div>
           </div>

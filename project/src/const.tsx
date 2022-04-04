@@ -37,3 +37,11 @@ export enum FILM_SCORE {
   VERY_GOOD = 'Very Good',
   AWESOME = 'Awesome',
 }
+
+export interface DataUser {
+  avatarUrl: string;
+  email: string;
+  id: number;
+  name: string;
+  token: string;
+ }

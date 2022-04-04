@@ -1,20 +1,10 @@
-// import Header from '../../components/header/header';
-// import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 import FavoriteFilm from '../../components/favorite-film/favorite-film';
-// import Header from '../../components/header/header';
 import { Link } from 'react-router-dom';
 
-// function element() {
-//   return (
-//     <h1 className="page-title user-page__title">My list</h1>
-//   );
-// }
-
 function MyListPage() {
-  const {favoriteFilms} = useAppSelector((state) => state);
-  // eslint-disable-next-line no-console
-  console.log('myListFavoriteFilms', favoriteFilms);
+  const favoriteFilms = useAppSelector((state) => state.favoriteFilms);
+
   return (
     <div className="user-page">
 

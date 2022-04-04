@@ -7,11 +7,6 @@ export const getToken = (): Token => {
   return token ?? '';
 };
 
-export const getData = () => {
-  const data = localStorage.getItem('lala');
-  return data ?? 'hz';
-};
-
 export const saveToken = (token: Token): void => {
   localStorage.setItem(AUTH_TOKEN_KEY_NAME, token);
 };
