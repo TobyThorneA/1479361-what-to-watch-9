@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { AuthorizationStatus } from '../../const';
 import Header from '../../components/header/header';
 import NotFoundPage from '../not-found-page/not-found-page';
@@ -12,11 +12,12 @@ import { useEffect } from 'react';
 import MyListButton from '../../components/my-list-button/my-list-button';
 import AddReviwButton from '../../components/add-revie-button/add-review-button';
 
-
 function FilmPage() {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const currentFilm = useAppSelector((state) => state.currentFilm);
   const {id}= useParams();
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     store.dispatch(fetchCurrentFilmsAction(Number(id)));
@@ -49,11 +50,11 @@ function FilmPage() {
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
+                <button onClick={() => navigate(`/player/${currentFilm.id}`)} className="btn btn--play film-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
-                  <Link to={`/player/${currentFilm.id}`} key={currentFilm.id}><span>Play</span></Link>
+                  <span>Play</span>
                 </button>
                 {authorizationStatus === AuthorizationStatus.Auth? <MyListButton/>: ''}
                 {authorizationStatus === AuthorizationStatus.Auth? <AddReviwButton currentId = {currentFilm.id} /> : ''}

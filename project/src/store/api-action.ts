@@ -2,9 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, store } from '.';
 import { APIRoute, AppRoute, AuthorizationStatus, DataUser, TIMEOUT_SHOW_ERROR } from '../const';
 import { errorHandle } from '../services/error-handle';
-import { dropToken, saveToken } from '../services/token';
+import { dropToken, saveDataUser, saveToken } from '../services/token';
 import { AuthData, Comment, FilmStatus
-  // UserData
 } from '../types';
 import {
   loadComments,
@@ -47,6 +46,7 @@ export const loginAction = createAsyncThunk(
     try {
       const {data} = await api.post<DataUser>(APIRoute.Login, {email, password});
       saveToken(data.token);
+      saveDataUser(JSON.stringify(data));
       store.dispatch(requireAuthorization(AuthorizationStatus.Auth));
       store.dispatch(redirectToRoute(AppRoute.Main));
     } catch (error) {
@@ -147,7 +147,7 @@ export const addCommentsAction = createAsyncThunk(
   async ({id, dataComment}: Comment ) => {
     try{
       await api.post<Comment>(`${APIRoute.Comments}/${id}`, dataComment);
-
+      store.dispatch(redirectToRoute(`${APIRoute.Films}/${id}`));
     }catch(error){
       errorHandle(error);
       store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));

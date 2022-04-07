@@ -19,7 +19,7 @@ function MoreLikeFilms({currentFilm}: MoreLikeFilmsProps) {
               if(it.id === currentFilm.id){
                 return null;
               }
-              return <MoreLikeFilm {...it}/>;
+              return <MoreLikeFilm key={it.id} {...it}/>;
             }
             return null;
           }).slice(0, 5)}

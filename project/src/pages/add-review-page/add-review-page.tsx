@@ -1,5 +1,7 @@
 import {Link, useParams} from 'react-router-dom';
 import CommentSubmissionForm from '../../components/comment-submission-form/comment-submission-form';
+import SignOutButton from '../../components/sign-out-button/sign-out-button';
+import { APIRoute } from '../../const';
 import { useAppSelector } from '../../hooks';
 import NotFoundPage from '../not-found-page/not-found-page';
 
@@ -31,28 +33,19 @@ function AddReviewPage() {
             </Link>
           </div>
 
-          {/*Блок нав в хедере есть только у адд ривью. чтото придумать надо  */}
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
                 <Link to={`/films/${dataFilm.id}`} className="breadcrumbs__link">{dataFilm.name}</Link>
               </li>
               <li className="breadcrumbs__item">
-                <Link to={'/'} className="breadcrumbs__link">Add review</Link>
+                <Link to={`${APIRoute.Films}/${dataFilm.id}/review`} className="breadcrumbs__link">Add review</Link>
               </li>
             </ul>
           </nav>
 
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </li>
-            <li className="user-block__item">
-              <Link to={'/login'} className="user-block__link">Sign out</Link>
-            </li>
-          </ul>
+          <SignOutButton />
+
         </header>
 
         <div className="film-card__poster film-card__poster--small">

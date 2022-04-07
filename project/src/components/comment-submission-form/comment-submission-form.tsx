@@ -1,7 +1,5 @@
 import React,{ FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { APIRoute } from '../../const';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { store } from '../../store';
 import { addCommentsAction, fetchCommentsAction } from '../../store/api-action';
 import { Film } from '../../types';
@@ -15,15 +13,16 @@ interface PostFormValues {
 const disabledPostButton = (postFormValues: PostFormValues): boolean => {
   if(postFormValues.comment.length > 50
     && postFormValues.comment.length < 400
-    && postFormValues.rating > 1){
+  ){
     return false;
   }
   return true;
 };
 
 function CommentSubmissionForm(props: Film) {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const loadingComment = useAppSelector((state) => state.loadingComment);
+
   const [postFormValues, setPostFormValues] = useState<PostFormValues>({
     comment: '',
     rating: 0,
@@ -40,14 +39,14 @@ function CommentSubmissionForm(props: Film) {
       },
     };
 
+
     dispatch(addCommentsAction(dataCommentFilm));
     store.dispatch(fetchCommentsAction(props.id));
-    navigate(`${APIRoute.Films}/${props.id}`);
   };
 
   return (
-    <div className="add-review">
-      <form  onSubmit={ fieldChangeHandler} action="" className="add-review__form">
+    <div  className="add-review">
+      <form onSubmit={ fieldChangeHandler} action="" className="add-review__form">
         <div className="rating">
           <div className="rating__stars">
             {stars.map((it)=> (
@@ -58,7 +57,7 @@ function CommentSubmissionForm(props: Film) {
           </div>
         </div>
 
-        <div className="add-review__text">
+        <div className="add-review__text" >
           <textarea
             onChange={(evt) => setPostFormValues({comment: evt.target.value, rating: postFormValues.rating})}
             className="add-review__textarea"
@@ -69,7 +68,12 @@ function CommentSubmissionForm(props: Film) {
           >
           </textarea>
           <div className="add-review__submit">
-            <button disabled={disabledPostButton(postFormValues)} className="add-review__btn" type="submit">Post</button>
+            <button disabled={
+              disabledPostButton(postFormValues) || loadingComment
+            }
+            className="add-review__btn" type="submit"
+            >Post
+            </button>
           </div>
 
         </div>

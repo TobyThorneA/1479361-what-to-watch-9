@@ -17,7 +17,7 @@ function HomePage() {
   const allFilms = useAppSelector((state) => state.allFilms);
   const promoFilm = useAppSelector((state) => state.promoFilm);
   const currentGenre = useAppSelector((state) => state.genre);
-  const currentFilm = useAppSelector((state) => state.filmsCount);
+  const filmsCount = useAppSelector((state) => state.filmsCount);
 
   const dispatch = useAppDispatch();
 
@@ -54,11 +54,11 @@ function HomePage() {
 
           <div className="catalog__films-list">
             {filterFilms
-              .slice(0, currentFilm)
+              .slice(0, filmsCount)
               .map((it) => <CardFilm key={it.id} {...it}/>)}
           </div>
 
-          {filterFilms.length > currentFilm && <ShowMoreButton/>}
+          {filterFilms.length > filmsCount && <ShowMoreButton/>}
 
         </section>
 

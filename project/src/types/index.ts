@@ -26,6 +26,11 @@ export interface FilmCard {
   reviews: Array<ReviewProps>;
 }
 
+export interface HeaderProps {
+  dataFilm?: Film;
+  boolean?: string;
+}
+
 export interface Film {
   id: number
   name: string
@@ -106,6 +111,8 @@ export interface GenreFilterReducerProps {
   isDataLoaded: boolean;
   error: string;
   dataUser: DataUser;
+  playOrPause: boolean;
+  loadingComment: boolean;
 }
 
 export interface Comment {

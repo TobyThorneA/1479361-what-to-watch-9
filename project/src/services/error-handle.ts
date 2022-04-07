@@ -20,6 +20,8 @@ export const errorHandle = (error: ErrorType): void => {
   if(response) {
     switch(response.status){
       case HTTP_CODE.BAD_REQUEST:
+        // eslint-disable-next-line no-alert
+        alert(response.data.error);
         handleError(response.data.error);
         break;
       case HTTP_CODE.NOT_FOUND:

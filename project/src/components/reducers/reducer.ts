@@ -12,8 +12,11 @@ import {
   setError,
   showMore,
   setCurrentFilmStatus,
-  setPromoFilmStatus
+  setPromoFilmStatus,
+  defaultFilmsCount,
+  playOrPause
 } from '../../store/action';
+import { fetchCommentsAction } from '../../store/api-action';
 import { GenreFilterReducerProps } from '../../types';
 
 const dataFilm = {
@@ -44,7 +47,7 @@ const dataUserAcc = {
   token: '',
 };
 
-const defaultGenre: GenreFilterReducerProps = {
+const defaultData: GenreFilterReducerProps = {
   genre: 'All Genres',
   filmsCount: 8,
   allFilms: [],
@@ -57,13 +60,27 @@ const defaultGenre: GenreFilterReducerProps = {
   isDataLoaded: false,
   error: '',
   dataUser: dataUserAcc,
+  playOrPause: true,
+  loadingComment: false,
 };
 
-const reducer = createReducer(defaultGenre, (builder) => {
+const reducer = createReducer(defaultData, (builder) => {
   builder
+    .addCase(fetchCommentsAction.pending, (state) => {
+      state.loadingComment = true;
+    })
+    .addCase(fetchCommentsAction.fulfilled, (state,action) => {
+      state.loadingComment = false;
+    })
+    .addCase(fetchCommentsAction.rejected, (state,action) => {
+      state.loadingComment = false;
+    })
     .addCase(changeGenre, (state, action) => {
       state.genre = action.payload;
-      state.filmsCount = defaultGenre.filmsCount;
+      state.filmsCount = defaultData.filmsCount;
+    })
+    .addCase(defaultFilmsCount, (state) => {
+      state.filmsCount = defaultData.filmsCount;
     })
     .addCase(showMore, (state) => {
       state.filmsCount += 8;
@@ -95,6 +112,9 @@ const reducer = createReducer(defaultGenre, (builder) => {
     })
     .addCase(setPromoFilmStatus, (state, action) => {
       state.promoFilm.isFavorite = action.payload;
+    })
+    .addCase(playOrPause, (state, action) => {
+      state.playOrPause = action.payload;
     })
     .addCase(setCurrentFilmStatus, (state, action) => {
       state.currentFilm.isFavorite = action.payload;
