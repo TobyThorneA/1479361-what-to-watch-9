@@ -2,15 +2,14 @@ import { AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { PromoServer } from '../../types';
 import Header from '../header/header';
-import MyListButton from './my-list-button';
+import MyListButton from '../../components/my-list-button-promo/my-list-button';
+import { useNavigate } from 'react-router-dom';
+
 
 function PromoFilm(props: PromoServer ) {
-  const {authorizationStatus} = useAppSelector((state) => state);
-  const renderMyListButton = () => {
-    if(authorizationStatus === AuthorizationStatus.Auth){
-      return <MyListButton/>;
-    }
-  };
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const navigate =useNavigate();
+
   return (
     <section className="film-card">
       <div className="film-card__bg">
@@ -34,14 +33,14 @@ function PromoFilm(props: PromoServer ) {
             </p>
 
             <div className="film-card__buttons">
-              <button className="btn btn--play film-card__button" type="button">
+              <button onClick={() => navigate(`/player/${props.id}`)} className="btn btn--play film-card__button" type="button">
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
                 </svg>
                 <span>Play</span>
               </button>
 
-              {renderMyListButton()}
+              {authorizationStatus === AuthorizationStatus.Auth? <MyListButton/>: ''}
 
             </div>
           </div>

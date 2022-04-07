@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { reducer } from '../components/reducers/genre-filter-reducer';
-import { createAPI } from '../services/api';
+import { reducer } from '../components/reducers/reducer';
+import { createAPI } from './api';
 import { redirect } from './middlewares/redirect';
 
 export const api = createAPI();

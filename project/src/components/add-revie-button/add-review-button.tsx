@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom';
-import { FilmServer } from '../../types';
+// import { Link } from 'react-router-dom';
 
-function AddReviwButton(props: FilmServer) {
+import { useNavigate } from 'react-router-dom';
+
+
+interface addReviewButtonProps {
+  currentId: number;
+}
+
+function AddReviwButton({currentId}: addReviewButtonProps) {
+  const navigate = useNavigate();
   return (
-    <Link to={
-      `/films/${props.id}/review`
-    }
-    key={props.id}
-    className="btn film-card__button"
-    >Add review
-    </Link>
+    <button onClick={() => navigate(`/films/${currentId}/review`)} className="btn film-card__button">Add review</button>
   );
 }
 

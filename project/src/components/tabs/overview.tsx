@@ -1,10 +1,10 @@
 import { FILM_SCORE } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { FilmServer } from '../../types';
+import { Film } from '../../types';
 
 function Overview() {
-  const {currentFilmServer} = useAppSelector((state) => state);
-  const filmScore = (film: FilmServer) => {
+  const currentFilm = useAppSelector((state) => state.currentFilm);
+  const filmScore = (film: Film) => {
     if(film.rating <= 3){
       return  FILM_SCORE.BAD;
     }else if(film.rating > 3 && film.rating<= 5){
@@ -21,16 +21,16 @@ function Overview() {
   return (
     <div>
       <div className="film-rating">
-        <div className="film-rating__score">{filmScore(currentFilmServer)}</div>
+        <div className="film-rating__score">{filmScore(currentFilm)}</div>
         <p className="film-rating__meta">
-          <span className="film-rating__level">{currentFilmServer.rating}</span>
-          <span className="film-rating__count">{currentFilmServer.scoresCount} ratings</span>
+          <span className="film-rating__level">{currentFilm.rating}</span>
+          <span className="film-rating__count">{currentFilm.scoresCount} ratings</span>
         </p>
       </div>
       <div className="film-card__text">
-        <p>{currentFilmServer.description}</p>
-        <p className="film-card__director"><strong>Director: {currentFilmServer.director}</strong></p>
-        <p className="film-card__starring"><strong>Starring: {currentFilmServer.starring}</strong></p>
+        <p>{currentFilm.description}</p>
+        <p className="film-card__director"><strong>Director: {currentFilm.director}</strong></p>
+        <p className="film-card__starring"><strong>Starring: {currentFilm.starring}</strong></p>
       </div>
     </div>
   );

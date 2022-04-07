@@ -7,7 +7,7 @@ import PlayerPage from '../../pages/player-page/player-page';
 import SignInPage from '../../pages/sign-in-page/sign-in-page';
 import MyListPage from '../../pages/my-list-page/my-list-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
-import PrivateRoute from '../../components/private-route/private-route';
+import  { PrivateRoute, PrivateRouteAuthUser } from '../../components/private-route/private-route';
 import {  useAppSelector } from '../../hooks';
 import LoadingScreen from '../loadin-screen/loading-screen';
 import HistoryRouter from '../history-route/history-route';
@@ -52,7 +52,11 @@ function App() {
         />
         <Route
           path={AppRoute.SignIn}
-          element={<SignInPage/>}
+          element={
+            <PrivateRouteAuthUser authorizationStatus={authorizationStatus}>
+              <SignInPage/>
+            </PrivateRouteAuthUser>
+          }
         />
         <Route
           path={AppRoute.AddReview}

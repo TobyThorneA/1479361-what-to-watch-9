@@ -20,4 +20,17 @@ function PrivateRoute(props: PrivateRouteProps) {
   );
 }
 
-export default PrivateRoute;
+function PrivateRouteAuthUser(props: PrivateRouteProps) {
+  const {authorizationStatus, children} = props;
+
+  return (
+    authorizationStatus === AuthorizationStatus.NoAuth
+      ? children
+      :
+      <Navigate
+        to={AppRoute.Main}
+      />
+  );
+}
+
+export  {PrivateRoute, PrivateRouteAuthUser};

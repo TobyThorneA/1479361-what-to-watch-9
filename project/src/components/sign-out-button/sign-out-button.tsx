@@ -1,18 +1,21 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useAppDispatch } from '../../hooks';
+import { getDataUser } from '../../services/token';
 import { store } from '../../store';
+import { defaultFilmsCount } from '../../store/action';
 import { fetchFavoriteFilmsAction, logoutAction } from '../../store/api-action';
 
-function SignOut() {
+function SignOutButton() {
   const dispatch = useAppDispatch();
+  const dataUser = getDataUser();
 
   return (
-    <ul className="user-block">
+    <ul className="user-block" onClick={() => dispatch(defaultFilmsCount())} >
       <li className="user-block__item">
         <div onClick={() => store.dispatch(fetchFavoriteFilmsAction())} className="user-block__avatar">
           <Link to={AppRoute.MyList}>
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+            <img src={dataUser.avatarUrl} alt={dataUser.name} width="63" height="63" />
           </Link>
         </div>
       </li>
@@ -31,4 +34,4 @@ function SignOut() {
   );
 }
 
-export default SignOut;
+export default SignOutButton;

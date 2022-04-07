@@ -1,28 +1,32 @@
 import { Link } from 'react-router-dom';
 import { AuthorizationStatus } from '../../const';
-import { useAppSelector } from '../../hooks';
-import SignIn from './sign-in';
-import SignOut from './sign-out';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { defaultFilmsCount } from '../../store/action';
+import SignInButton from '../sign-in-button/sign-in-button';
+import SignOutButton from '../sign-out-button/sign-out-button';
 
-function Header() {
-  const {authorizationStatus} = useAppSelector((state) => state);
-  const signInOrSignOut = () => {
-    if(authorizationStatus === AuthorizationStatus.Auth){
-      return <SignOut/>;
-    }
-    return <SignIn/>;
-  };
+interface HeaderProps {
+  element?: JSX.Element
+}
+
+function Header({element}: HeaderProps) {
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const dispatch = useAppDispatch();
 
   return (
     <header className="page-header film-card__head">
-      <div className="logo">
+      <div className="logo" onClick={() => dispatch(defaultFilmsCount())}>
         <Link to="/" className="logo__link">
           <span className="logo__letter logo__letter--1">W</span>
           <span className="logo__letter logo__letter--2">T</span>
           <span className="logo__letter logo__letter--3">W</span>
         </Link>
+
       </div>
-      {signInOrSignOut()}
+      {authorizationStatus ===
+      AuthorizationStatus.Auth
+        ? <SignOutButton/>
+        : <SignInButton/>}
     </header>
   );
 }

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { FilmServer } from '../../types';
+import { Film } from '../../types';
 
-function MoreLikeFilm(dataFilm: FilmServer) {
+function MoreLikeFilm(dataFilm: Film) {
   return (
     <article className="small-film-card catalog__films-card">
       <Link to={`/films/${dataFilm.id}`}>

@@ -1,13 +1,13 @@
 import React from 'react';
 import { useAppSelector } from '../../hooks';
-import { FilmServer } from '../../types';
+import { Film } from '../../types';
 import MoreLikeFilm from './more-like-film';
 interface MoreLikeFilmsProps {
-  currentFilmServer: FilmServer;
+  currentFilm: Film;
 }
 
-function MoreLikeFilms({currentFilmServer}: MoreLikeFilmsProps) {
-  const films = useAppSelector((state) => state.moreLikeFilmsServer);
+function MoreLikeFilms({currentFilm}: MoreLikeFilmsProps) {
+  const films = useAppSelector((state) => state.moreLikeFilms);
 
   return (
     <div className="page-content">
@@ -15,11 +15,11 @@ function MoreLikeFilms({currentFilmServer}: MoreLikeFilmsProps) {
         <h2 className="catalog__title">More like this</h2>
         <div className="catalog__films-list">
           {films.map((it) => {
-            if(it.genre === currentFilmServer.genre){
-              if(it.id === currentFilmServer.id){
+            if(it.genre === currentFilm.genre){
+              if(it.id === currentFilm.id){
                 return null;
               }
-              return <MoreLikeFilm {...it}/>;
+              return <MoreLikeFilm key={it.id} {...it}/>;
             }
             return null;
           }).slice(0, 5)}
