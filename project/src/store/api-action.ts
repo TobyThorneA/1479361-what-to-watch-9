@@ -151,6 +151,8 @@ export const addCommentsAction = createAsyncThunk(
     }catch(error){
       errorHandle(error);
       store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+      // eslint-disable-next-line no-alert
+      alert(error);
     }
   },
 );

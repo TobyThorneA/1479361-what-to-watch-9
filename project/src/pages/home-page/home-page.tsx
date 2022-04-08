@@ -77,6 +77,7 @@ function HomePage() {
         </footer>
       </div>
     </div>
+
   );
 }
 

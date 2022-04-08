@@ -1,16 +1,15 @@
 import { useNavigate, useParams } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
 import { AuthorizationStatus } from '../../const';
 import Header from '../../components/header/header';
 import NotFoundPage from '../not-found-page/not-found-page';
-import Index from '../../components/tabs';
-import MoreLikeFilms from '../../components/more-like/more-like-films';
+import MoreLikeFilms from '../../components/more-like-films/more-like-films';
 import {  useAppSelector } from '../../hooks';
 import { store } from '../../store';
 import { fetchCommentsAction, fetchCurrentFilmsAction, fetchShowMoreFilmsAction } from '../../store/api-action';
 import { useEffect } from 'react';
 import MyListButton from '../../components/my-list-button/my-list-button';
 import AddReviwButton from '../../components/add-revie-button/add-review-button';
+import Tabs from '../../components/tabs/tabs';
 
 function FilmPage() {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
@@ -69,7 +68,7 @@ function FilmPage() {
               <img src={currentFilm.posterImage} alt={currentFilm.name} width="218" height="327" />
             </div>
 
-            <Index {...currentFilm} />
+            <Tabs {...currentFilm} />
 
           </div>
         </div>

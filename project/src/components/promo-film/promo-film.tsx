@@ -2,7 +2,7 @@ import { AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { PromoServer } from '../../types';
 import Header from '../header/header';
-import MyListButton from '../../components/my-list-button-promo/my-list-button';
+import MyListButtonPromo from '../my-list-button-promo/my-list-button-promo';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -40,7 +40,7 @@ function PromoFilm(props: PromoServer ) {
                 <span>Play</span>
               </button>
 
-              {authorizationStatus === AuthorizationStatus.Auth? <MyListButton/>: ''}
+              {authorizationStatus === AuthorizationStatus.Auth? <MyListButtonPromo/>: ''}
 
             </div>
           </div>

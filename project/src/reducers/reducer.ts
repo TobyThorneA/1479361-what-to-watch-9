@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { AuthorizationStatus } from '../../const';
+import { AuthorizationStatus } from '../const';
 import {
   changeGenre,
   loadComments,
@@ -15,9 +15,9 @@ import {
   setPromoFilmStatus,
   defaultFilmsCount,
   playOrPause
-} from '../../store/action';
-import { fetchCommentsAction } from '../../store/api-action';
-import { GenreFilterReducerProps } from '../../types';
+} from '../store/action';
+import { fetchCommentsAction } from '../store/api-action';
+import { GenreFilterReducerProps } from '../types';
 
 const dataFilm = {
   id: 0,
@@ -69,10 +69,10 @@ const reducer = createReducer(defaultData, (builder) => {
     .addCase(fetchCommentsAction.pending, (state) => {
       state.loadingComment = true;
     })
-    .addCase(fetchCommentsAction.fulfilled, (state,action) => {
+    .addCase(fetchCommentsAction.fulfilled, (state) => {
       state.loadingComment = false;
     })
-    .addCase(fetchCommentsAction.rejected, (state,action) => {
+    .addCase(fetchCommentsAction.rejected, (state) => {
       state.loadingComment = false;
     })
     .addCase(changeGenre, (state, action) => {

@@ -3,7 +3,7 @@ import { store } from '../../store';
 import { setPromoFilmStatus } from '../../store/action';
 import { addFilmStatusAction } from '../../store/api-action';
 
-function MyListButton() {
+function MyListButtonPromo() {
   const dispatch = useAppDispatch();
   const promoFilm = useAppSelector((state) => state.promoFilm);
 
@@ -29,4 +29,4 @@ function MyListButton() {
   );
 }
 
-export default MyListButton;
+export default MyListButtonPromo;

@@ -20,7 +20,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ErrorMessage />
-      <App />,
+      <App />
     </Provider>
 
   </React.StrictMode>,

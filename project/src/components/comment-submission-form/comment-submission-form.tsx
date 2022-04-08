@@ -51,7 +51,11 @@ function CommentSubmissionForm(props: Film) {
           <div className="rating__stars">
             {stars.map((it)=> (
               <div key={it} onClick={() => setPostFormValues({rating: it + 1 , comment: postFormValues.comment})}>
-                <input className="rating__input" id={`star-${it}`} type="radio" name="rating" value={it} />
+                <input
+                  className="rating__input" id={`star-${it}`}
+                  type="radio" name="rating"
+                  value={it}
+                />
                 <label className="rating__label" htmlFor={`star-${it}`}>Rating {it + 1}</label>
               </div>)).reverse()}
           </div>

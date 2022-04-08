@@ -1,15 +1,11 @@
 import { Link } from 'react-router-dom';
 import { AuthorizationStatus } from '../../const';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector  } from '../../hooks';
 import { defaultFilmsCount } from '../../store/action';
 import SignInButton from '../sign-in-button/sign-in-button';
 import SignOutButton from '../sign-out-button/sign-out-button';
 
-interface HeaderProps {
-  element?: JSX.Element
-}
-
-function Header({element}: HeaderProps) {
+function Header() {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const dispatch = useAppDispatch();
 

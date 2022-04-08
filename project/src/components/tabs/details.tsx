@@ -13,8 +13,8 @@ function Details() {
           <strong className="film-card__details-name">Starring</strong>
           <span className="film-card__details-value">
 
-            {currentFilm.starring.map((it)=> (
-              <>{it}<br /></>
+            {currentFilm.starring.map((it, i)=> (
+              <li key={it[i]}>{it}<br /></li>
             ))}
           </span>
         </p>
