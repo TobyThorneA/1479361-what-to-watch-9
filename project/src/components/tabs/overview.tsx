@@ -2,18 +2,25 @@ import { FILM_SCORE } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { Film } from '../../types';
 
+const ratingFilm = {
+  BAD: 3,
+  NORMAL: 5,
+  GOOD: 8,
+  VERY_GOOD: 10,
+};
+
 function Overview() {
   const currentFilm = useAppSelector((state) => state.currentFilm);
   const filmScore = (film: Film) => {
-    if(film.rating <= 3){
+    if(film.rating <= ratingFilm.BAD){
       return  FILM_SCORE.BAD;
-    }else if(film.rating > 3 && film.rating<= 5){
+    }else if(film.rating > ratingFilm.BAD && film.rating<= ratingFilm.NORMAL){
       return  FILM_SCORE.NORMAL;
-    }else if(film.rating > 5 && film.rating <= 8){
+    }else if(film.rating > ratingFilm.NORMAL && film.rating <= ratingFilm.GOOD){
       return  FILM_SCORE.GOOD;
-    }else if(film.rating > 8 && film.rating < 10){
+    }else if(film.rating > ratingFilm.GOOD && film.rating < ratingFilm.VERY_GOOD){
       return  FILM_SCORE.VERY_GOOD;
-    }else if(film.rating >= 10){
+    }else if(film.rating >= ratingFilm.VERY_GOOD){
       return FILM_SCORE.AWESOME;
     }
   };

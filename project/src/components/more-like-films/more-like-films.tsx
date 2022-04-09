@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppSelector } from '../../hooks';
 import { Film } from '../../types';
 import MoreLikeFilm from '../more-like-film/more-like-film';

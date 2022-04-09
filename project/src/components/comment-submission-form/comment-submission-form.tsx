@@ -1,18 +1,23 @@
-import React,{ FormEvent, useState } from 'react';
+import { MouseEvent, ChangeEvent, FormEvent, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { store } from '../../store';
 import { addCommentsAction, fetchCommentsAction } from '../../store/api-action';
 import { Film } from '../../types';
 
-const stars = [...Array(10).keys()];
+const COUNT_STARS = 10;
+const MIN_COMMENT_LENGTH = 50;
+const MAX_COMMENT_LENGTH = 400;
+
+const stars = [...Array(COUNT_STARS).keys()];
 interface PostFormValues {
   comment: string;
   rating: number;
 }
 
+
 const disabledPostButton = (postFormValues: PostFormValues): boolean => {
-  if(postFormValues.comment.length > 50
-    && postFormValues.comment.length < 400
+  if(postFormValues.comment.length > MIN_COMMENT_LENGTH
+    && postFormValues.comment.length < MAX_COMMENT_LENGTH
   ){
     return false;
   }
@@ -25,8 +30,22 @@ function CommentSubmissionForm(props: Film) {
 
   const [postFormValues, setPostFormValues] = useState<PostFormValues>({
     comment: '',
-    rating: 0,
+    rating: -1,
   });
+
+  const onStarChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target) {
+      setPostFormValues({ ...postFormValues, rating: Number(event.currentTarget.value) });
+    }
+  };
+
+  const onStarClick = (event: MouseEvent<HTMLInputElement>) => {
+    if (event.target && event.currentTarget.checked) {
+      setPostFormValues({ ...postFormValues, rating: Number(event.currentTarget.value) });
+    }
+  };
+
+  const { rating } = postFormValues;
 
   const fieldChangeHandler = (evt: FormEvent<HTMLFormElement> ) => {
     evt.preventDefault();
@@ -53,8 +72,11 @@ function CommentSubmissionForm(props: Film) {
               <div key={it} onClick={() => setPostFormValues({rating: it + 1 , comment: postFormValues.comment})}>
                 <input
                   className="rating__input" id={`star-${it}`}
-                  type="radio" name="rating"
+                  type="radio" name={`reting-${it}`}
                   value={it}
+                  checked={it < rating}
+                  onChange={onStarChange}
+                  onClick={onStarClick}
                 />
                 <label className="rating__label" htmlFor={`star-${it}`}>Rating {it + 1}</label>
               </div>)).reverse()}

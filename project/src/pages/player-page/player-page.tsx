@@ -6,8 +6,6 @@ import { useAppSelector } from '../../hooks';
 import { playOrPause } from '../../store/action';
 import NotFoundPage from '../not-found-page/not-found-page';
 
-// Сторонняя функция для преобразования секунд в : чч.мм.сек
-// https://question-it.com/questions/386544/kak-konvertirovat-sekundy-v-minuty-i-chasy-v-javascript
 const secondsToHms = (d: number) => {
   d = Number(d);
   const h = Math.floor(d / 3600);
