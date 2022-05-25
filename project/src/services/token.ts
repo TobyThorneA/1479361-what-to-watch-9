@@ -20,12 +20,12 @@ export const getDataUser = (): DataUser => {
   return dataUser? JSON.parse(dataUser) : '';
 };
 
-export const saveToken = (token: Token): void => {
-  localStorage.setItem(AUTH_TOKEN_KEY_NAME, token);
-};
-
 export const saveDataUser = (data: Token): void => {
   localStorage.setItem(DATA_USER, data);
+};
+
+export const saveToken = (token: Token): void => {
+  localStorage.setItem(AUTH_TOKEN_KEY_NAME, token);
 };
 
 export const dropToken = (): void => {

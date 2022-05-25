@@ -11,7 +11,6 @@ import {
   fetchFavoriteFilmsAction
 } from './store/api-action';
 
-
 store.dispatch(fetchFilmsAction());
 store.dispatch(fetchPromoAction());
 store.dispatch(checkAuthAction());
