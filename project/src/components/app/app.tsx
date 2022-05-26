@@ -28,7 +28,7 @@ function App() {
   }
 
   return (
-    <HistoryRouter history={browserHistory} basename='/public' >
+    <HistoryRouter history={browserHistory} >
       <Routes>
         <Route
           path={AppRoute.Main}
