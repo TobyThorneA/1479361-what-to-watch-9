@@ -9,7 +9,13 @@ import { useNavigate } from 'react-router-dom';
 function PromoFilm(props: PromoServer ) {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const navigate =useNavigate();
-
+  let la = '';
+  la = 'la';
+  if(la === 'alala'){
+    return(
+      <div></div>
+    );
+  }
   return (
     <section className="film-card">
       <div className="film-card__bg">
